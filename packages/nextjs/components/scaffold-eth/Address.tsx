@@ -5,7 +5,7 @@ import { Address as AddressType, isAddress } from "viem";
 import { hardhat } from "viem/chains";
 import { useEnsAvatar, useEnsName } from "wagmi";
 import { CheckCircleIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
-import { BlockieAvatar } from "~~/components/scaffold-eth";
+import { MyCustomAvatar } from "~~/components/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
 
@@ -81,9 +81,9 @@ export const Address = ({ address, disableAddressLink, format, size = "base" }: 
   return (
     <div className="flex items-center">
       <div className="flex-shrink-0">
-        <BlockieAvatar
-          address={address}
-          ensImage={ensAvatar}
+        <MyCustomAvatar
+          address={`0x${address}`}
+          ensImage={ensAvatar ?? undefined}
           size={(blockieSizeMap[size] * 24) / blockieSizeMap["base"]}
         />
       </div>
