@@ -44,13 +44,7 @@ contract LoanSafeMumbai is ILoanSafeMumbai, Context, IERC721Receiver {
 			address(new AccessManagerMumbai(msg.sender))
 		);
 		USER_MESSENGER = IMessengerMumbai(
-			address(
-				new MessengerMumbai(
-					_router,
-					_link,
-					USER_ACCESS_MANAGER
-				)
-			)
+			address(new MessengerMumbai(_router, _link, USER_ACCESS_MANAGER))
 		);
 	}
 

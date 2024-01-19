@@ -6,11 +6,8 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import { IERC721Receiver } from "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import { IERC721 } from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import { Address } from "@openzeppelin/contracts/utils/Address.sol";
-import { Context } from "@openzeppelin/contracts/utils/Context.sol";
 import { ReentrancyGuard } from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
-import { IAccessManagerSepolia } from "../interfaces/IAccessManagerSepolia.sol";
 import { ILoanManagerSepolia } from "../interfaces/ILoanManagerSepolia.sol";
 import { ISafeSepolia } from "../interfaces/ISafeSepolia.sol";
 import { ILoanSafeSepolia } from "../interfaces/ILoanSafeSepolia.sol";
@@ -21,21 +18,16 @@ import { ILoanSafeSepolia } from "../interfaces/ILoanSafeSepolia.sol";
  * @notice Contract for safekeeping loans
  * @dev This contract should be deployed by the SafeSepolia contract.
  */
-contract LoanSafeSepolia is ILoanSafeSepolia, Context, IERC721Receiver {
+contract LoanSafeSepolia is ILoanSafeSepolia, IERC721Receiver {
 	using SafeERC20 for IERC20;
-
-	/// @notice Access manager contract.
-	IAccessManagerSepolia public immutable USER_ACCESS_MANAGER;
 
 	/// @notice Loan manager contract.
 	ILoanManagerSepolia public immutable USER_LOAN_MANAGER;
 
 	/**
 	 * @notice Constructor
-	 * @param _accessManager Address of the access manager contract.
 	 */
-	constructor(IAccessManagerSepolia _accessManager) {
-		USER_ACCESS_MANAGER = _accessManager;
+	constructor() {
 		USER_LOAN_MANAGER = ILoanManagerSepolia(msg.sender);
 	}
 

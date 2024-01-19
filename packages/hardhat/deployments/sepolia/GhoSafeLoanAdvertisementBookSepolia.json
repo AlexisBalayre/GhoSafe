@@ -1,0 +1,474 @@
+{
+  "address": "0x8E3cDEA3e6e439a49c7958d0bB76254E786b5266",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IGhoSafeAccessManagerSepolia",
+          "name": "_accessManager",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        }
+      ],
+      "name": "UnauthorizedAccess",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "loanId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "maxLoanAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "maxDuration",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "interestRate",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "safeAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "loanManagerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "LoanAdvertisementPublished",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "loanId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "maxLoanAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "maxDuration",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "interestRate",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "isAvailable",
+          "type": "bool"
+        }
+      ],
+      "name": "LoanAdvertisementUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_loanId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getLoanAdvertisementData",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "timestampLastUpdate",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxLoanAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxDuration",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "interestRate",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "safeAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "loanManagerAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "isAvailable",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct IGhoSafeLoanAdvertisementBookSepolia.LoanAdvertisement",
+          "name": "loanAdvertisementData",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_maxLoanAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_maxDuration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_interestRate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_safeAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_loanManagerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "publishLoanAdvertisement",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "loanId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_loanId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_maxLoanAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_maxDuration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_interestRate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "_isAvailable",
+          "type": "bool"
+        }
+      ],
+      "name": "updateLoanAdvertisementData",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x947b3906823cebfc78d58c839251b9b1c7116071ca49ec5c4dc55c7f5cfa00f3",
+  "receipt": {
+    "to": null,
+    "from": "0x065A4d3E3727D6826fa81e88c00b2937f8A25D1c",
+    "contractAddress": "0x8E3cDEA3e6e439a49c7958d0bB76254E786b5266",
+    "transactionIndex": 17,
+    "gasUsed": "389679",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x4fc236db9dd4f7e20ff462c9462d2d3d6ddc54955c16fec2e062b5eab80aed8f",
+    "transactionHash": "0x947b3906823cebfc78d58c839251b9b1c7116071ca49ec5c4dc55c7f5cfa00f3",
+    "logs": [],
+    "blockNumber": 5111296,
+    "cumulativeGasUsed": "1795330",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x124AE849075ff729Ffdf49a49519777206F6fF64"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "864a5f5c932fc35835f8dc35b7bce186",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IGhoSafeAccessManagerSepolia\",\"name\":\"_accessManager\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"UnauthorizedAccess\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"loanId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"maxLoanAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"maxDuration\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"interestRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"safeAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"loanManagerAddress\",\"type\":\"address\"}],\"name\":\"LoanAdvertisementPublished\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"loanId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"maxLoanAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"maxDuration\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"interestRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"isAvailable\",\"type\":\"bool\"}],\"name\":\"LoanAdvertisementUpdated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_loanId\",\"type\":\"uint256\"}],\"name\":\"getLoanAdvertisementData\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"timestampLastUpdate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxLoanAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxDuration\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"interestRate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"safeAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"loanManagerAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isAvailable\",\"type\":\"bool\"}],\"internalType\":\"struct IGhoSafeLoanAdvertisementBookSepolia.LoanAdvertisement\",\"name\":\"loanAdvertisementData\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_maxLoanAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_maxDuration\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_interestRate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_safeAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_loanManagerAddress\",\"type\":\"address\"}],\"name\":\"publishLoanAdvertisement\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"loanId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_loanId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_maxLoanAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_maxDuration\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_interestRate\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"_isAvailable\",\"type\":\"bool\"}],\"name\":\"updateLoanAdvertisementData\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"GhoSafe Protocol\",\"events\":{\"LoanAdvertisementPublished(uint256,uint256,uint256,uint256,address,address)\":{\"params\":{\"interestRate\":\"The interest rate (in basis points)\",\"loanId\":\"The ID of the loan advertisement.\",\"loanManagerAddress\":\"The address of the loan manager contract.*\",\"maxDuration\":\"The maximum loan duration (in seconds)\",\"maxLoanAmount\":\"The maximum loan amount (in Gho tokens)\",\"safeAddress\":\"The address of the GhoSafe contract.\"}},\"LoanAdvertisementUpdated(uint256,uint256,uint256,uint256,bool)\":{\"params\":{\"interestRate\":\"The interest rate (in basis points)\",\"isAvailable\":\"The availability of the loan advertisement.*\",\"loanId\":\"The ID of the loan advertisement.\",\"maxDuration\":\"The maximum loan duration (in seconds)\",\"maxLoanAmount\":\"The maximum loan amount (in Gho tokens)\"}}},\"kind\":\"dev\",\"methods\":{\"constructor\":{\"params\":{\"_accessManager\":\"The address of the access manager contract.\"}},\"getLoanAdvertisementData(uint256)\":{\"params\":{\"_loanId\":\"The ID of the loan advertisement.\"},\"returns\":{\"loanAdvertisementData\":\"The loan advertisement data.*\"}},\"publishLoanAdvertisement(uint256,uint256,uint256,address,address)\":{\"params\":{\"_interestRate\":\"The interest rate (in basis points)\",\"_loanManagerAddress\":\"The address of the loan manager contract.\",\"_maxDuration\":\"The maximum loan duration (in seconds)\",\"_maxLoanAmount\":\"The maximum loan amount (in Gho tokens)\",\"_safeAddress\":\"The address of the GhoSafe contract.\"},\"returns\":{\"loanId\":\"The ID of the loan advertisement.*\"}},\"updateLoanAdvertisementData(uint256,uint256,uint256,uint256,bool)\":{\"params\":{\"_interestRate\":\"The interest rate (in basis points)\",\"_isAvailable\":\"The availability of the loan advertisement.*\",\"_loanId\":\"The ID of the loan advertisement.\",\"_maxDuration\":\"The maximum loan duration (in seconds)\",\"_maxLoanAmount\":\"The maximum loan amount (in Gho tokens)\"}}},\"stateVariables\":{\"ACCESS_MANAGER\":{\"details\":\"Access manager contract.\"},\"loanAdvertisements\":{\"details\":\"Mapping from loanId to loan advertisement data.\"},\"loanAdvertisementsCount\":{\"details\":\"Counter for loan advertisements.\"}},\"title\":\"GhoSafeLoanAdvertisementBookSepolia Contract\",\"version\":1},\"userdoc\":{\"errors\":{\"UnauthorizedAccess(address)\":[{\"notice\":\"Not authorized Caller error\"}]},\"events\":{\"LoanAdvertisementPublished(uint256,uint256,uint256,uint256,address,address)\":{\"notice\":\"Event emitted when a new loan advertisement is published.\"},\"LoanAdvertisementUpdated(uint256,uint256,uint256,uint256,bool)\":{\"notice\":\"Event emitted when a loan advertisement is updated.\"}},\"kind\":\"user\",\"methods\":{\"constructor\":{\"notice\":\"Initializes the contract.\"},\"getLoanAdvertisementData(uint256)\":{\"notice\":\"Retrieves the loan advertisement data of a specific loan advertisement.\"},\"publishLoanAdvertisement(uint256,uint256,uint256,address,address)\":{\"notice\":\"Function to publish a new loan advertisement\"},\"updateLoanAdvertisementData(uint256,uint256,uint256,uint256,bool)\":{\"notice\":\"Function to update the availability of a loan advertisement\"}},\"notice\":\"Contract for publishing loan advertisements.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol\":\"GhoSafeLoanAdvertisementBookSepolia\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/IAccessControl.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (access/IAccessControl.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev External interface of AccessControl declared to support ERC165 detection.\\n */\\ninterface IAccessControl {\\n    /**\\n     * @dev The `account` is missing a role.\\n     */\\n    error AccessControlUnauthorizedAccount(address account, bytes32 neededRole);\\n\\n    /**\\n     * @dev The caller of a function is not the expected one.\\n     *\\n     * NOTE: Don't confuse with {AccessControlUnauthorizedAccount}.\\n     */\\n    error AccessControlBadConfirmation();\\n\\n    /**\\n     * @dev Emitted when `newAdminRole` is set as ``role``'s admin role, replacing `previousAdminRole`\\n     *\\n     * `DEFAULT_ADMIN_ROLE` is the starting admin for all roles, despite\\n     * {RoleAdminChanged} not being emitted signaling this.\\n     */\\n    event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole);\\n\\n    /**\\n     * @dev Emitted when `account` is granted `role`.\\n     *\\n     * `sender` is the account that originated the contract call, an admin role\\n     * bearer except when using {AccessControl-_setupRole}.\\n     */\\n    event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender);\\n\\n    /**\\n     * @dev Emitted when `account` is revoked `role`.\\n     *\\n     * `sender` is the account that originated the contract call:\\n     *   - if using `revokeRole`, it is the admin role bearer\\n     *   - if using `renounceRole`, it is the role bearer (i.e. `account`)\\n     */\\n    event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender);\\n\\n    /**\\n     * @dev Returns `true` if `account` has been granted `role`.\\n     */\\n    function hasRole(bytes32 role, address account) external view returns (bool);\\n\\n    /**\\n     * @dev Returns the admin role that controls `role`. See {grantRole} and\\n     * {revokeRole}.\\n     *\\n     * To change a role's admin, use {AccessControl-_setRoleAdmin}.\\n     */\\n    function getRoleAdmin(bytes32 role) external view returns (bytes32);\\n\\n    /**\\n     * @dev Grants `role` to `account`.\\n     *\\n     * If `account` had not been already granted `role`, emits a {RoleGranted}\\n     * event.\\n     *\\n     * Requirements:\\n     *\\n     * - the caller must have ``role``'s admin role.\\n     */\\n    function grantRole(bytes32 role, address account) external;\\n\\n    /**\\n     * @dev Revokes `role` from `account`.\\n     *\\n     * If `account` had been granted `role`, emits a {RoleRevoked} event.\\n     *\\n     * Requirements:\\n     *\\n     * - the caller must have ``role``'s admin role.\\n     */\\n    function revokeRole(bytes32 role, address account) external;\\n\\n    /**\\n     * @dev Revokes `role` from the calling account.\\n     *\\n     * Roles are often managed via {grantRole} and {revokeRole}: this function's\\n     * purpose is to provide a mechanism for accounts to lose their privileges\\n     * if they are compromised (such as when a trusted device is misplaced).\\n     *\\n     * If the calling account had been granted `role`, emits a {RoleRevoked}\\n     * event.\\n     *\\n     * Requirements:\\n     *\\n     * - the caller must be `callerConfirmation`.\\n     */\\n    function renounceRole(bytes32 role, address callerConfirmation) external;\\n}\\n\",\"keccak256\":\"0xb6b36edd6a2999fd243ff226d6cbf84bd71af2432bbd0dfe19392996a1d9cb41\",\"license\":\"MIT\"},\"@openzeppelin/contracts/access/extensions/IAccessControlDefaultAdminRules.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (access/extensions/IAccessControlDefaultAdminRules.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {IAccessControl} from \\\"../IAccessControl.sol\\\";\\n\\n/**\\n * @dev External interface of AccessControlDefaultAdminRules declared to support ERC165 detection.\\n */\\ninterface IAccessControlDefaultAdminRules is IAccessControl {\\n    /**\\n     * @dev The new default admin is not a valid default admin.\\n     */\\n    error AccessControlInvalidDefaultAdmin(address defaultAdmin);\\n\\n    /**\\n     * @dev At least one of the following rules was violated:\\n     *\\n     * - The `DEFAULT_ADMIN_ROLE` must only be managed by itself.\\n     * - The `DEFAULT_ADMIN_ROLE` must only be held by one account at the time.\\n     * - Any `DEFAULT_ADMIN_ROLE` transfer must be in two delayed steps.\\n     */\\n    error AccessControlEnforcedDefaultAdminRules();\\n\\n    /**\\n     * @dev The delay for transferring the default admin delay is enforced and\\n     * the operation must wait until `schedule`.\\n     *\\n     * NOTE: `schedule` can be 0 indicating there's no transfer scheduled.\\n     */\\n    error AccessControlEnforcedDefaultAdminDelay(uint48 schedule);\\n\\n    /**\\n     * @dev Emitted when a {defaultAdmin} transfer is started, setting `newAdmin` as the next\\n     * address to become the {defaultAdmin} by calling {acceptDefaultAdminTransfer} only after `acceptSchedule`\\n     * passes.\\n     */\\n    event DefaultAdminTransferScheduled(address indexed newAdmin, uint48 acceptSchedule);\\n\\n    /**\\n     * @dev Emitted when a {pendingDefaultAdmin} is reset if it was never accepted, regardless of its schedule.\\n     */\\n    event DefaultAdminTransferCanceled();\\n\\n    /**\\n     * @dev Emitted when a {defaultAdminDelay} change is started, setting `newDelay` as the next\\n     * delay to be applied between default admin transfer after `effectSchedule` has passed.\\n     */\\n    event DefaultAdminDelayChangeScheduled(uint48 newDelay, uint48 effectSchedule);\\n\\n    /**\\n     * @dev Emitted when a {pendingDefaultAdminDelay} is reset if its schedule didn't pass.\\n     */\\n    event DefaultAdminDelayChangeCanceled();\\n\\n    /**\\n     * @dev Returns the address of the current `DEFAULT_ADMIN_ROLE` holder.\\n     */\\n    function defaultAdmin() external view returns (address);\\n\\n    /**\\n     * @dev Returns a tuple of a `newAdmin` and an accept schedule.\\n     *\\n     * After the `schedule` passes, the `newAdmin` will be able to accept the {defaultAdmin} role\\n     * by calling {acceptDefaultAdminTransfer}, completing the role transfer.\\n     *\\n     * A zero value only in `acceptSchedule` indicates no pending admin transfer.\\n     *\\n     * NOTE: A zero address `newAdmin` means that {defaultAdmin} is being renounced.\\n     */\\n    function pendingDefaultAdmin() external view returns (address newAdmin, uint48 acceptSchedule);\\n\\n    /**\\n     * @dev Returns the delay required to schedule the acceptance of a {defaultAdmin} transfer started.\\n     *\\n     * This delay will be added to the current timestamp when calling {beginDefaultAdminTransfer} to set\\n     * the acceptance schedule.\\n     *\\n     * NOTE: If a delay change has been scheduled, it will take effect as soon as the schedule passes, making this\\n     * function returns the new delay. See {changeDefaultAdminDelay}.\\n     */\\n    function defaultAdminDelay() external view returns (uint48);\\n\\n    /**\\n     * @dev Returns a tuple of `newDelay` and an effect schedule.\\n     *\\n     * After the `schedule` passes, the `newDelay` will get into effect immediately for every\\n     * new {defaultAdmin} transfer started with {beginDefaultAdminTransfer}.\\n     *\\n     * A zero value only in `effectSchedule` indicates no pending delay change.\\n     *\\n     * NOTE: A zero value only for `newDelay` means that the next {defaultAdminDelay}\\n     * will be zero after the effect schedule.\\n     */\\n    function pendingDefaultAdminDelay() external view returns (uint48 newDelay, uint48 effectSchedule);\\n\\n    /**\\n     * @dev Starts a {defaultAdmin} transfer by setting a {pendingDefaultAdmin} scheduled for acceptance\\n     * after the current timestamp plus a {defaultAdminDelay}.\\n     *\\n     * Requirements:\\n     *\\n     * - Only can be called by the current {defaultAdmin}.\\n     *\\n     * Emits a DefaultAdminRoleChangeStarted event.\\n     */\\n    function beginDefaultAdminTransfer(address newAdmin) external;\\n\\n    /**\\n     * @dev Cancels a {defaultAdmin} transfer previously started with {beginDefaultAdminTransfer}.\\n     *\\n     * A {pendingDefaultAdmin} not yet accepted can also be cancelled with this function.\\n     *\\n     * Requirements:\\n     *\\n     * - Only can be called by the current {defaultAdmin}.\\n     *\\n     * May emit a DefaultAdminTransferCanceled event.\\n     */\\n    function cancelDefaultAdminTransfer() external;\\n\\n    /**\\n     * @dev Completes a {defaultAdmin} transfer previously started with {beginDefaultAdminTransfer}.\\n     *\\n     * After calling the function:\\n     *\\n     * - `DEFAULT_ADMIN_ROLE` should be granted to the caller.\\n     * - `DEFAULT_ADMIN_ROLE` should be revoked from the previous holder.\\n     * - {pendingDefaultAdmin} should be reset to zero values.\\n     *\\n     * Requirements:\\n     *\\n     * - Only can be called by the {pendingDefaultAdmin}'s `newAdmin`.\\n     * - The {pendingDefaultAdmin}'s `acceptSchedule` should've passed.\\n     */\\n    function acceptDefaultAdminTransfer() external;\\n\\n    /**\\n     * @dev Initiates a {defaultAdminDelay} update by setting a {pendingDefaultAdminDelay} scheduled for getting\\n     * into effect after the current timestamp plus a {defaultAdminDelay}.\\n     *\\n     * This function guarantees that any call to {beginDefaultAdminTransfer} done between the timestamp this\\n     * method is called and the {pendingDefaultAdminDelay} effect schedule will use the current {defaultAdminDelay}\\n     * set before calling.\\n     *\\n     * The {pendingDefaultAdminDelay}'s effect schedule is defined in a way that waiting until the schedule and then\\n     * calling {beginDefaultAdminTransfer} with the new delay will take at least the same as another {defaultAdmin}\\n     * complete transfer (including acceptance).\\n     *\\n     * The schedule is designed for two scenarios:\\n     *\\n     * - When the delay is changed for a larger one the schedule is `block.timestamp + newDelay` capped by\\n     * {defaultAdminDelayIncreaseWait}.\\n     * - When the delay is changed for a shorter one, the schedule is `block.timestamp + (current delay - new delay)`.\\n     *\\n     * A {pendingDefaultAdminDelay} that never got into effect will be canceled in favor of a new scheduled change.\\n     *\\n     * Requirements:\\n     *\\n     * - Only can be called by the current {defaultAdmin}.\\n     *\\n     * Emits a DefaultAdminDelayChangeScheduled event and may emit a DefaultAdminDelayChangeCanceled event.\\n     */\\n    function changeDefaultAdminDelay(uint48 newDelay) external;\\n\\n    /**\\n     * @dev Cancels a scheduled {defaultAdminDelay} change.\\n     *\\n     * Requirements:\\n     *\\n     * - Only can be called by the current {defaultAdmin}.\\n     *\\n     * May emit a DefaultAdminDelayChangeCanceled event.\\n     */\\n    function rollbackDefaultAdminDelay() external;\\n\\n    /**\\n     * @dev Maximum time in seconds for an increase to {defaultAdminDelay} (that is scheduled using {changeDefaultAdminDelay})\\n     * to take effect. Default to 5 days.\\n     *\\n     * When the {defaultAdminDelay} is scheduled to be increased, it goes into effect after the new delay has passed with\\n     * the purpose of giving enough time for reverting any accidental change (i.e. using milliseconds instead of seconds)\\n     * that may lock the contract. However, to avoid excessive schedules, the wait is capped by this function and it can\\n     * be overrode for a custom {defaultAdminDelay} increase scheduling.\\n     *\\n     * IMPORTANT: Make sure to add a reasonable amount of time while overriding this value, otherwise,\\n     * there's a risk of setting a high new delay that goes into effect almost immediately without the\\n     * possibility of human intervention in the case of an input error (eg. set milliseconds instead of seconds).\\n     */\\n    function defaultAdminDelayIncreaseWait() external view returns (uint48);\\n}\\n\",\"keccak256\":\"0x969a4661694319a003d037ccbf7c8310f8994d746b763c933d3f76d906e67203\",\"license\":\"MIT\"},\"contracts/Sepolia/interfaces/IGhoSafeAccessManagerSepolia.sol\":{\"content\":\"// File: contracts/Sepolia/interfaces/IGhoSafeAccessManagerSepolia.sol\\n// SPDX-License-Identifier: MIT\\npragma solidity 0.8.23;\\n\\nimport { IAccessControlDefaultAdminRules } from \\\"@openzeppelin/contracts/access/extensions/IAccessControlDefaultAdminRules.sol\\\";\\n\\n/**\\n * @title IGhoSafeAccessManagerSepolia Contract Interface\\n * @author GhoSafe Protocol\\n * @notice Interface for the GhoSafeAccessManagerSepolia contract\\n * @dev This interface should be implemented by the GhoSafeAccessManagerSepolia contract.\\n */\\ninterface IGhoSafeAccessManagerSepolia is IAccessControlDefaultAdminRules {\\n\\t/**\\n\\t * @notice Returns the role identifier for the ADMIN_ROLE.\\n\\t * @return  bytes32  .\\n\\t */\\n\\tfunction ADMIN_ROLE() external view returns (bytes32);\\n\\n\\t/**\\n\\t * @notice Returns the role identifier for the MINTER_ROLE.\\n\\t * @return  bytes32  .\\n\\t */\\n\\tfunction MINTER_ROLE() external view returns (bytes32);\\n\\n\\t/**\\n\\t * @notice Returns the role identifier for the BURNER_ROLE.\\n\\t * @return  bytes32  .\\n\\t */\\n\\tfunction CREDIT_SCORE_OFFICER_ROLE() external view returns (bytes32);\\n\\n\\t/**\\n\\t * @notice Returns the role identifier for the CREDIT_SCORE_OFFICER_ROLE.\\n\\t * @return  bytes32  .\\n\\t */\\n\\tfunction LOAN_PUBLISHER_ROLE() external view returns (bytes32);\\n}\\n\",\"keccak256\":\"0x69764917936d8a501a7c1994949d9fef106d0fbc86101d49252f61eb6057af34\",\"license\":\"MIT\"},\"contracts/Sepolia/interfaces/IGhoSafeLoanAdvertisementBookSepolia.sol\":{\"content\":\"// File: contracts/Sepolia/interfaces/IGhoSafeLoanAdvertisementBookSepolia.sol\\n// SPDX-License-Identifier: MIT\\npragma solidity 0.8.23;\\n\\n/**\\n * @title GhoSafeLoanAdvertisementBookSepolia Interface\\n * @author GhoSafe Protocol\\n * @notice Interface for the GhoSafeLoanAdvertisementBookSepolia contract.\\n * @dev This interface should be implemented by the GhoSafeLoanAdvertisementBookSepolia contract.\\n */\\ninterface IGhoSafeLoanAdvertisementBookSepolia {\\n\\t/**\\n\\t * @notice Struct for storing loan advertisement data.\\n\\t * @param timestampLastUpdate The timestamp of the last update.\\n\\t * @param maxLoanAmount The maximum loan amount (in Gho tokens)\\n\\t * @param maxDuration The maximum loan duration (in seconds)\\n\\t * @param interestRate The interest rate (in basis points)\\n\\t * @param safeAddress The address of the GhoSafe contract.\\n\\t * @param loanManagerAddress The address of the loan manager contract.\\n\\t * @param isAvailable The availability of the loan advertisement.\\n\\t **/\\n\\tstruct LoanAdvertisement {\\n\\t\\tuint256 timestampLastUpdate;\\n\\t\\tuint256 maxLoanAmount;\\n\\t\\tuint256 maxDuration;\\n\\t\\tuint256 interestRate;\\n\\t\\taddress safeAddress;\\n\\t\\taddress loanManagerAddress;\\n\\t\\tbool isAvailable;\\n\\t}\\n\\n\\t/// @notice Not authorized Caller error\\n\\terror UnauthorizedAccess(address caller);\\n\\n\\t/**\\n\\t * @notice Event emitted when a new loan advertisement is published.\\n\\t * @param loanId The ID of the loan advertisement.\\n\\t * @param maxLoanAmount The maximum loan amount (in Gho tokens)\\n\\t * @param maxDuration The maximum loan duration (in seconds)\\n\\t * @param interestRate The interest rate (in basis points)\\n\\t * @param safeAddress The address of the GhoSafe contract.\\n\\t * @param loanManagerAddress The address of the loan manager contract.\\n\\t **/\\n\\tevent LoanAdvertisementPublished(\\n\\t\\tuint256 indexed loanId,\\n\\t\\tuint256 maxLoanAmount,\\n\\t\\tuint256 maxDuration,\\n\\t\\tuint256 interestRate,\\n\\t\\taddress safeAddress,\\n\\t\\taddress loanManagerAddress\\n\\t);\\n\\n\\t/**\\n\\t * @notice Event emitted when a loan advertisement is updated.\\n\\t * @param loanId The ID of the loan advertisement.\\n\\t * @param maxLoanAmount The maximum loan amount (in Gho tokens)\\n\\t * @param maxDuration The maximum loan duration (in seconds)\\n\\t * @param interestRate The interest rate (in basis points)\\n\\t * @param isAvailable The availability of the loan advertisement.\\n\\t **/\\n\\tevent LoanAdvertisementUpdated(\\n\\t\\tuint256 indexed loanId,\\n\\t\\tuint256 maxLoanAmount,\\n\\t\\tuint256 maxDuration,\\n\\t\\tuint256 interestRate,\\n\\t\\tbool isAvailable\\n\\t);\\n\\n\\t/**\\n\\t * @notice Publishes a new loan advertisement.\\n\\t * @param _maxLoanAmount The maximum loan amount in Gho tokens.\\n\\t * @param _maxDuration The maximum loan duration in seconds.\\n\\t * @param _interestRate The interest rate in basis points.\\n\\t * @param _safeAddress The address of the GhoSafe contract.\\n\\t * @param _loanManagerAddress The address of the loan manager contract.\\n\\t * @return loanId The ID of the published loan advertisement.\\n\\t */\\n\\tfunction publishLoanAdvertisement(\\n\\t\\tuint256 _maxLoanAmount,\\n\\t\\tuint256 _maxDuration,\\n\\t\\tuint256 _interestRate,\\n\\t\\taddress _safeAddress,\\n\\t\\taddress _loanManagerAddress\\n\\t) external returns (uint256 loanId);\\n\\n\\t/**\\n\\t * @notice Updates the data of an existing loan advertisement.\\n\\t * @param _loanId The ID of the loan advertisement.\\n\\t * @param _maxLoanAmount The updated maximum loan amount.\\n\\t * @param _maxDuration The updated maximum loan duration.\\n\\t * @param _interestRate The updated interest rate.\\n\\t * @param _isAvailable The updated availability status.\\n\\t */\\n\\tfunction updateLoanAdvertisementData(\\n\\t\\tuint256 _loanId,\\n\\t\\tuint256 _maxLoanAmount,\\n\\t\\tuint256 _maxDuration,\\n\\t\\tuint256 _interestRate,\\n\\t\\tbool _isAvailable\\n\\t) external;\\n\\n\\t/**\\n\\t * @notice Retrieves the data of a specific loan advertisement.\\n\\t * @param _loanId The ID of the loan advertisement.\\n\\t * @return loanAdvertisementData The data of the requested loan advertisement.\\n\\t */\\n\\tfunction getLoanAdvertisementData(\\n\\t\\tuint256 _loanId\\n\\t) external view returns (LoanAdvertisement memory loanAdvertisementData);\\n}\\n\",\"keccak256\":\"0x79f0060212e67a1a77e740774affde92a474232a06378f0e2d9f3a07323b0363\",\"license\":\"MIT\"},\"contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol\":{\"content\":\"// File: contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol\\n// SPDX-License-Identifier: MIT\\npragma solidity 0.8.23;\\n\\nimport { IGhoSafeAccessManagerSepolia } from \\\"../interfaces/IGhoSafeAccessManagerSepolia.sol\\\";\\nimport { IGhoSafeLoanAdvertisementBookSepolia } from \\\"../interfaces/IGhoSafeLoanAdvertisementBookSepolia.sol\\\";\\n\\n/**\\n * @title GhoSafeLoanAdvertisementBookSepolia Contract\\n * @author GhoSafe Protocol\\n * @notice Contract for publishing loan advertisements.\\n */\\ncontract GhoSafeLoanAdvertisementBookSepolia is\\n\\tIGhoSafeLoanAdvertisementBookSepolia\\n{\\n\\t/// @dev Access manager contract.\\n\\tIGhoSafeAccessManagerSepolia internal immutable ACCESS_MANAGER;\\n\\n\\t/// @dev Mapping from loanId to loan advertisement data.\\n\\tmapping(uint256 => LoanAdvertisement) private loanAdvertisements;\\n\\n\\t/// @dev Counter for loan advertisements.\\n\\tuint256 private loanAdvertisementsCount;\\n\\n\\t/**\\n\\t * @notice Initializes the contract.\\n\\t * @param _accessManager The address of the access manager contract.\\n\\t */\\n\\tconstructor(IGhoSafeAccessManagerSepolia _accessManager) {\\n\\t\\tACCESS_MANAGER = _accessManager;\\n\\t}\\n\\n\\t/**\\n\\t * @notice Retrieves the loan advertisement data of a specific loan advertisement.\\n\\t * @param _loanId The ID of the loan advertisement.\\n\\t * @return loanAdvertisementData The loan advertisement data.\\n\\t **/\\n\\tfunction getLoanAdvertisementData(\\n\\t\\tuint256 _loanId\\n\\t) external view returns (LoanAdvertisement memory loanAdvertisementData) {\\n\\t\\tloanAdvertisementData = loanAdvertisements[_loanId];\\n\\t}\\n\\n\\t/**\\n\\t * @notice Function to publish a new loan advertisement\\n\\t * @param _maxLoanAmount The maximum loan amount (in Gho tokens)\\n\\t * @param _maxDuration The maximum loan duration (in seconds)\\n\\t * @param _interestRate The interest rate (in basis points)\\n\\t * @param _safeAddress The address of the GhoSafe contract.\\n\\t * @param _loanManagerAddress The address of the loan manager contract.\\n\\t * @return loanId The ID of the loan advertisement.\\n\\t **/\\n\\tfunction publishLoanAdvertisement(\\n\\t\\tuint256 _maxLoanAmount,\\n\\t\\tuint256 _maxDuration,\\n\\t\\tuint256 _interestRate,\\n\\t\\taddress _safeAddress,\\n\\t\\taddress _loanManagerAddress\\n\\t) external returns (uint256 loanId) {\\n\\t\\tif (\\n\\t\\t\\t!ACCESS_MANAGER.hasRole(\\n\\t\\t\\t\\tkeccak256(\\\"LOAN_PUBLISHER_ROLE\\\"),\\n\\t\\t\\t\\tmsg.sender\\n\\t\\t\\t)\\n\\t\\t) {\\n\\t\\t\\trevert UnauthorizedAccess(msg.sender);\\n\\t\\t}\\n\\n\\t\\tloanId = ++loanAdvertisementsCount;\\n\\n\\t\\tloanAdvertisements[loanId] = LoanAdvertisement({\\n\\t\\t\\ttimestampLastUpdate: block.timestamp,\\n\\t\\t\\tmaxLoanAmount: _maxLoanAmount,\\n\\t\\t\\tmaxDuration: _maxDuration,\\n\\t\\t\\tinterestRate: _interestRate,\\n\\t\\t\\tsafeAddress: _safeAddress,\\n\\t\\t\\tloanManagerAddress: _loanManagerAddress,\\n\\t\\t\\tisAvailable: true\\n\\t\\t});\\n\\n\\t\\temit LoanAdvertisementPublished(\\n\\t\\t\\tloanId,\\n\\t\\t\\t_maxLoanAmount,\\n\\t\\t\\t_maxDuration,\\n\\t\\t\\t_interestRate,\\n\\t\\t\\t_safeAddress,\\n\\t\\t\\t_loanManagerAddress\\n\\t\\t);\\n\\t}\\n\\n\\t/**\\n\\t * @notice Function to update the availability of a loan advertisement\\n\\t * @param _loanId The ID of the loan advertisement.\\n\\t * @param _maxLoanAmount The maximum loan amount (in Gho tokens)\\n\\t * @param _maxDuration The maximum loan duration (in seconds)\\n\\t * @param _interestRate The interest rate (in basis points)\\n\\t * @param _isAvailable The availability of the loan advertisement.\\n\\t **/\\n\\tfunction updateLoanAdvertisementData(\\n\\t\\tuint256 _loanId,\\n\\t\\tuint256 _maxLoanAmount,\\n\\t\\tuint256 _maxDuration,\\n\\t\\tuint256 _interestRate,\\n\\t\\tbool _isAvailable\\n\\t) external {\\n\\t\\tif (msg.sender != loanAdvertisements[_loanId].loanManagerAddress) {\\n\\t\\t\\trevert UnauthorizedAccess(msg.sender);\\n\\t\\t}\\n\\n\\t\\tloanAdvertisements[_loanId].timestampLastUpdate = block.timestamp;\\n\\t\\tloanAdvertisements[_loanId].maxLoanAmount = _maxLoanAmount;\\n\\t\\tloanAdvertisements[_loanId].maxDuration = _maxDuration;\\n\\t\\tloanAdvertisements[_loanId].interestRate = _interestRate;\\n\\t\\tloanAdvertisements[_loanId].isAvailable = _isAvailable;\\n\\n\\t\\temit LoanAdvertisementUpdated(\\n\\t\\t\\t_loanId,\\n\\t\\t\\t_maxLoanAmount,\\n\\t\\t\\t_maxDuration,\\n\\t\\t\\t_interestRate,\\n\\t\\t\\t_isAvailable\\n\\t\\t);\\n\\t}\\n}\\n\",\"keccak256\":\"0xa29a17d3be487ccb58383c7df833f403db254f3a967f503ebfa109b52131fde3\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60a060405234801561001057600080fd5b5060405161069838038061069883398101604081905261002f91610040565b6001600160a01b0316608052610070565b60006020828403121561005257600080fd5b81516001600160a01b038116811461006957600080fd5b9392505050565b60805161060d61008b6000396000610138015261060d6000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80635df0d03b146100465780637f6634a71461006c578063a409dc3a146100e5575b600080fd5b6100596100543660046104c5565b6100fa565b6040519081526020015b60405180910390f35b61007f61007a366004610515565b61030f565b6040516100639190600060e08201905082518252602083015160208301526040830151604083015260608301516060830152608083015160018060a01b0380821660808501528060a08601511660a0850152505060c0830151151560c083015292915050565b6100f86100f336600461053f565b6103da565b005b604051632474521560e21b81527f39c77d9939c25ecc449153d5a0f9430fc2a42f6c32ef28b87fb6b1118277197360048201523360248201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906391d1485490604401602060405180830381865afa158015610187573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101ab919061058c565b6101cf57604051633733be5960e21b81523360048201526024015b60405180910390fd5b6001600081546101de906105b0565b91829055506040805160e08101825242815260208082018a81528284018a8152606084018a81526001600160a01b03808b16608087019081528a821660a08801908152600160c0890181815260008c815298899052978a902098518955955195880195909555925160028701559051600386015590516004850180549183166001600160a01b031990921691909117905590516005909301805492511515600160a01b026001600160a81b031990931693909116929092171790555190915081907f2017fd1968096426872a530204d1f89f7297d29cb4cabe7a7569245f3ab61729906102fe9089908990899089908990948552602085019390935260408401919091526001600160a01b03908116606084015216608082015260a00190565b60405180910390a295945050505050565b6103636040518060e001604052806000815260200160008152602001600081526020016000815260200160006001600160a01b0316815260200160006001600160a01b031681526020016000151581525090565b5060009081526020818152604091829020825160e081018452815481526001820154928101929092526002810154928201929092526003820154606082015260048201546001600160a01b03908116608083015260059092015491821660a0820152600160a01b90910460ff16151560c082015290565b6000858152602081905260409020600501546001600160a01b0316331461041657604051633733be5960e21b81523360048201526024016101c6565b600085815260208181526040918290204281556001810187905560028101869055600381018590556005018054841515600160a01b810260ff60a01b199092169190911790915582518781529182018690528183018590526060820152905186917fdf23ce90070cd1e1c6efcbc6c6c1e7df02e687b2cc7609ab45b3c6412a527ebb919081900360800190a25050505050565b80356001600160a01b03811681146104c057600080fd5b919050565b600080600080600060a086880312156104dd57600080fd5b8535945060208601359350604086013592506104fb606087016104a9565b9150610509608087016104a9565b90509295509295909350565b60006020828403121561052757600080fd5b5035919050565b801515811461053c57600080fd5b50565b600080600080600060a0868803121561055757600080fd5b85359450602086013593506040860135925060608601359150608086013561057e8161052e565b809150509295509295909350565b60006020828403121561059e57600080fd5b81516105a98161052e565b9392505050565b6000600182016105d057634e487b7160e01b600052601160045260246000fd5b506001019056fea26469706673582212205594eda234a875f648fd9ef1fe5386132941f0ac0cfb59cf1f863527d2406e1864736f6c63430008170033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80635df0d03b146100465780637f6634a71461006c578063a409dc3a146100e5575b600080fd5b6100596100543660046104c5565b6100fa565b6040519081526020015b60405180910390f35b61007f61007a366004610515565b61030f565b6040516100639190600060e08201905082518252602083015160208301526040830151604083015260608301516060830152608083015160018060a01b0380821660808501528060a08601511660a0850152505060c0830151151560c083015292915050565b6100f86100f336600461053f565b6103da565b005b604051632474521560e21b81527f39c77d9939c25ecc449153d5a0f9430fc2a42f6c32ef28b87fb6b1118277197360048201523360248201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906391d1485490604401602060405180830381865afa158015610187573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101ab919061058c565b6101cf57604051633733be5960e21b81523360048201526024015b60405180910390fd5b6001600081546101de906105b0565b91829055506040805160e08101825242815260208082018a81528284018a8152606084018a81526001600160a01b03808b16608087019081528a821660a08801908152600160c0890181815260008c815298899052978a902098518955955195880195909555925160028701559051600386015590516004850180549183166001600160a01b031990921691909117905590516005909301805492511515600160a01b026001600160a81b031990931693909116929092171790555190915081907f2017fd1968096426872a530204d1f89f7297d29cb4cabe7a7569245f3ab61729906102fe9089908990899089908990948552602085019390935260408401919091526001600160a01b03908116606084015216608082015260a00190565b60405180910390a295945050505050565b6103636040518060e001604052806000815260200160008152602001600081526020016000815260200160006001600160a01b0316815260200160006001600160a01b031681526020016000151581525090565b5060009081526020818152604091829020825160e081018452815481526001820154928101929092526002810154928201929092526003820154606082015260048201546001600160a01b03908116608083015260059092015491821660a0820152600160a01b90910460ff16151560c082015290565b6000858152602081905260409020600501546001600160a01b0316331461041657604051633733be5960e21b81523360048201526024016101c6565b600085815260208181526040918290204281556001810187905560028101869055600381018590556005018054841515600160a01b810260ff60a01b199092169190911790915582518781529182018690528183018590526060820152905186917fdf23ce90070cd1e1c6efcbc6c6c1e7df02e687b2cc7609ab45b3c6412a527ebb919081900360800190a25050505050565b80356001600160a01b03811681146104c057600080fd5b919050565b600080600080600060a086880312156104dd57600080fd5b8535945060208601359350604086013592506104fb606087016104a9565b9150610509608087016104a9565b90509295509295909350565b60006020828403121561052757600080fd5b5035919050565b801515811461053c57600080fd5b50565b600080600080600060a0868803121561055757600080fd5b85359450602086013593506040860135925060608601359150608086013561057e8161052e565b809150509295509295909350565b60006020828403121561059e57600080fd5b81516105a98161052e565b9392505050565b6000600182016105d057634e487b7160e01b600052601160045260246000fd5b506001019056fea26469706673582212205594eda234a875f648fd9ef1fe5386132941f0ac0cfb59cf1f863527d2406e1864736f6c63430008170033",
+  "devdoc": {
+    "author": "GhoSafe Protocol",
+    "events": {
+      "LoanAdvertisementPublished(uint256,uint256,uint256,uint256,address,address)": {
+        "params": {
+          "interestRate": "The interest rate (in basis points)",
+          "loanId": "The ID of the loan advertisement.",
+          "loanManagerAddress": "The address of the loan manager contract.*",
+          "maxDuration": "The maximum loan duration (in seconds)",
+          "maxLoanAmount": "The maximum loan amount (in Gho tokens)",
+          "safeAddress": "The address of the GhoSafe contract."
+        }
+      },
+      "LoanAdvertisementUpdated(uint256,uint256,uint256,uint256,bool)": {
+        "params": {
+          "interestRate": "The interest rate (in basis points)",
+          "isAvailable": "The availability of the loan advertisement.*",
+          "loanId": "The ID of the loan advertisement.",
+          "maxDuration": "The maximum loan duration (in seconds)",
+          "maxLoanAmount": "The maximum loan amount (in Gho tokens)"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "constructor": {
+        "params": {
+          "_accessManager": "The address of the access manager contract."
+        }
+      },
+      "getLoanAdvertisementData(uint256)": {
+        "params": {
+          "_loanId": "The ID of the loan advertisement."
+        },
+        "returns": {
+          "loanAdvertisementData": "The loan advertisement data.*"
+        }
+      },
+      "publishLoanAdvertisement(uint256,uint256,uint256,address,address)": {
+        "params": {
+          "_interestRate": "The interest rate (in basis points)",
+          "_loanManagerAddress": "The address of the loan manager contract.",
+          "_maxDuration": "The maximum loan duration (in seconds)",
+          "_maxLoanAmount": "The maximum loan amount (in Gho tokens)",
+          "_safeAddress": "The address of the GhoSafe contract."
+        },
+        "returns": {
+          "loanId": "The ID of the loan advertisement.*"
+        }
+      },
+      "updateLoanAdvertisementData(uint256,uint256,uint256,uint256,bool)": {
+        "params": {
+          "_interestRate": "The interest rate (in basis points)",
+          "_isAvailable": "The availability of the loan advertisement.*",
+          "_loanId": "The ID of the loan advertisement.",
+          "_maxDuration": "The maximum loan duration (in seconds)",
+          "_maxLoanAmount": "The maximum loan amount (in Gho tokens)"
+        }
+      }
+    },
+    "stateVariables": {
+      "ACCESS_MANAGER": {
+        "details": "Access manager contract."
+      },
+      "loanAdvertisements": {
+        "details": "Mapping from loanId to loan advertisement data."
+      },
+      "loanAdvertisementsCount": {
+        "details": "Counter for loan advertisements."
+      }
+    },
+    "title": "GhoSafeLoanAdvertisementBookSepolia Contract",
+    "version": 1
+  },
+  "userdoc": {
+    "errors": {
+      "UnauthorizedAccess(address)": [
+        {
+          "notice": "Not authorized Caller error"
+        }
+      ]
+    },
+    "events": {
+      "LoanAdvertisementPublished(uint256,uint256,uint256,uint256,address,address)": {
+        "notice": "Event emitted when a new loan advertisement is published."
+      },
+      "LoanAdvertisementUpdated(uint256,uint256,uint256,uint256,bool)": {
+        "notice": "Event emitted when a loan advertisement is updated."
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "constructor": {
+        "notice": "Initializes the contract."
+      },
+      "getLoanAdvertisementData(uint256)": {
+        "notice": "Retrieves the loan advertisement data of a specific loan advertisement."
+      },
+      "publishLoanAdvertisement(uint256,uint256,uint256,address,address)": {
+        "notice": "Function to publish a new loan advertisement"
+      },
+      "updateLoanAdvertisementData(uint256,uint256,uint256,uint256,bool)": {
+        "notice": "Function to update the availability of a loan advertisement"
+      }
+    },
+    "notice": "Contract for publishing loan advertisements.",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 8929,
+        "contract": "contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol:GhoSafeLoanAdvertisementBookSepolia",
+        "label": "loanAdvertisements",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_uint256,t_struct(LoanAdvertisement)7642_storage)"
+      },
+      {
+        "astId": 8932,
+        "contract": "contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol:GhoSafeLoanAdvertisementBookSepolia",
+        "label": "loanAdvertisementsCount",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_uint256,t_struct(LoanAdvertisement)7642_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct IGhoSafeLoanAdvertisementBookSepolia.LoanAdvertisement)",
+        "numberOfBytes": "32",
+        "value": "t_struct(LoanAdvertisement)7642_storage"
+      },
+      "t_struct(LoanAdvertisement)7642_storage": {
+        "encoding": "inplace",
+        "label": "struct IGhoSafeLoanAdvertisementBookSepolia.LoanAdvertisement",
+        "members": [
+          {
+            "astId": 7629,
+            "contract": "contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol:GhoSafeLoanAdvertisementBookSepolia",
+            "label": "timestampLastUpdate",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7631,
+            "contract": "contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol:GhoSafeLoanAdvertisementBookSepolia",
+            "label": "maxLoanAmount",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7633,
+            "contract": "contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol:GhoSafeLoanAdvertisementBookSepolia",
+            "label": "maxDuration",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7635,
+            "contract": "contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol:GhoSafeLoanAdvertisementBookSepolia",
+            "label": "interestRate",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7637,
+            "contract": "contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol:GhoSafeLoanAdvertisementBookSepolia",
+            "label": "safeAddress",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address"
+          },
+          {
+            "astId": 7639,
+            "contract": "contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol:GhoSafeLoanAdvertisementBookSepolia",
+            "label": "loanManagerAddress",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_address"
+          },
+          {
+            "astId": 7641,
+            "contract": "contracts/Sepolia/protocol/GhoSafeLoanAdvertisementBookSepolia.sol:GhoSafeLoanAdvertisementBookSepolia",
+            "label": "isAvailable",
+            "offset": 20,
+            "slot": "5",
+            "type": "t_bool"
+          }
+        ],
+        "numberOfBytes": "192"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

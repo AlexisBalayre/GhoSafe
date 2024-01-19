@@ -28,9 +28,6 @@ contract MessengerMumbai is IMessengerMumbai, CCIPReceiver {
 	/// @notice LoanSafe contract.
 	ILoanSafeMumbai public immutable USER_LOAN_SAFE;
 
-	/// @notice Mapping of message IDs to messages.
-	mapping(bytes32 => string) public messageIdToText;
-
 	/// @notice Mapping to keep track of allowlisted destination chains.
 	mapping(uint64 => bool) public allowlistedDestinationChains;
 
@@ -119,6 +116,15 @@ contract MessengerMumbai is IMessengerMumbai, CCIPReceiver {
 	}
 
 	/**
+	 * @notice Allows the contract owner to send back the collateral of a loan.
+	 * @param _loanId ID of the loan.
+	 * @dev This function reverts if the sender is not the owner.
+	 */
+	function rescueCollateral(uint256 _loanId) external onlyOwner {
+		USER_LOAN_SAFE.sendBackCollateral(_loanId);
+	}
+
+	/**
 	 * @notice Allows the contract owner to update the allowlist status of a source chain for transactions.
 	 * @param _sourceChainSelector The identifier (aka selector) for the source blockchain.
 	 * @param _allowed The new allowlist status.
@@ -193,10 +199,7 @@ contract MessengerMumbai is IMessengerMumbai, CCIPReceiver {
 		LINK_TOKEN.approve(address(router), fees);
 
 		// Send the CCIP message through the router and store the returned CCIP message ID
-		router.ccipSend(
-			_destinationChainSelector,
-			evm2AnyMessage
-		);
+		router.ccipSend(_destinationChainSelector, evm2AnyMessage);
 	}
 
 	/**
@@ -230,14 +233,14 @@ contract MessengerMumbai is IMessengerMumbai, CCIPReceiver {
 			);
 
 			// Transfer collateral to this contract.
-			if (!request.collateralType) {
-				IERC20(request.collateralAddress).safeTransferFrom(
+			if (request.collateralType == false) {
+				IERC721(request.collateralAddress).safeTransferFrom(
 					request.borrower,
 					address(USER_LOAN_SAFE),
 					request.collateralIdOrAmount
 				);
 			} else {
-				IERC721(request.collateralAddress).safeTransferFrom(
+				IERC20(request.collateralAddress).safeTransferFrom(
 					request.borrower,
 					address(USER_LOAN_SAFE),
 					request.collateralIdOrAmount
@@ -252,7 +255,7 @@ contract MessengerMumbai is IMessengerMumbai, CCIPReceiver {
 		}
 		// Liquidate Action
 		else if (request.action == 2) {
-			USER_LOAN_SAFE.seizeCollateral(request.loanId, request.borrower);
+			USER_LOAN_SAFE.seizeCollateral(request.loanId, request.borrower); // Here the receiver is the liquidator
 			isSuccessful = true;
 		}
 

@@ -28,4 +28,7 @@ interface IAccessManagerMumbai is IAccessControlDefaultAdminRules {
 	 * @return Owner role
 	 */
 	function OWNER_ROLE() external view returns (bytes32);
+
+	/// @notice Unauthorized access error.
+	error UnauthorizedAccess(address caller);
 }

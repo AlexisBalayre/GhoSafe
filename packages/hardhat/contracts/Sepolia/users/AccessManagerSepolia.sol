@@ -32,6 +32,16 @@ contract AccessManagerSepolia is AccessControlDefaultAdminRules {
 	}
 
 	/**
+	 * @dev Throws if called by any account other than the default admin.
+	 */
+	modifier onlyAdmin() {
+		if (!hasRole(DEFAULT_ADMIN_ROLE, _msgSender())) {
+			revert UnauthorizedAccess(_msgSender());
+		}
+		_;
+	}
+
+	/**
 	 * @notice Grant owner role to a new address
 	 * @param _newOwner Address of the new owner
 	 */
@@ -45,15 +55,5 @@ contract AccessManagerSepolia is AccessControlDefaultAdminRules {
 	 */
 	function revokeOwnerRole(address _oldOwner) external onlyAdmin {
 		_revokeRole(OWNER_ROLE, _oldOwner);
-	}
-
-	/**
-	 * @dev Throws if called by any account other than the default admin.
-	 */
-	modifier onlyAdmin() {
-		if (!hasRole(DEFAULT_ADMIN_ROLE, _msgSender())) {
-			revert UnauthorizedAccess(_msgSender());
-		}
-		_;
 	}
 }

@@ -19,16 +19,13 @@ import { ISafeSepolia } from "../interfaces/ISafeSepolia.sol";
  */
 contract SafeSepolia is ISafeSepolia {
 	/// @dev Aave's lending pool address on Sepolia: https://sepolia.etherscan.io/address/0x6Ae43d3271ff6888e7Fc43Fd7321a503ff738951
-	IPool internal constant POOL =
-		IPool(0x6Ae43d3271ff6888e7Fc43Fd7321a503ff738951);
+	IPool internal immutable AAVE_POOL;
 
 	/// @dev GHO token address on Sepolia: https://sepolia.etherscan.io/address/0xc4bF5CbDaBE595361438F8c6a187bDc330539c60
-	IERC20 internal constant GHO_TOKEN =
-		IERC20(0xc4bF5CbDaBE595361438F8c6a187bDc330539c60);
+	IERC20 internal immutable GHO_TOKEN;
 
-	/// @dev Credit Delegation Token for GHO on Sepolia: https://sepolia.etherscan.io/address/0xd4FEA5bD40cE7d0f7b269678541fF0a95FCb4b68
-	ICreditDelegationToken internal constant DEBT_GHO_TOKEN =
-		ICreditDelegationToken(0xd4FEA5bD40cE7d0f7b269678541fF0a95FCb4b68);
+	/// @dev Credit Delegation Token for GHO on Sepolia: https://sepolia.etherscan.io/address/0x67ae46EF043F7A4508BD1d6B94DB6c33F0915844
+	ICreditDelegationToken internal immutable DEBT_GHO_TOKEN;
 
 	/// @notice Access manager contract.
 	IAccessManagerSepolia public immutable USER_ACCESS_MANAGER;
@@ -39,27 +36,33 @@ contract SafeSepolia is ISafeSepolia {
 	/// @notice Address of the Mailbox contract.
 	address public immutable USER_MAILBOX_ADDRESS;
 
-	/// @dev Referral code for Aave interactions
-	uint16 internal REFERRAL_CODE;
+	/// @notice Referral code for Aave interactions.
+	uint16 public immutable REFERRAL_CODE;
 
 	/**
 	 * @notice Constructor
-	 * @param _referralCode Referral code for Aave interactions
 	 * @param _ghoSafeIDSepolia Address of the GhoSafeIDSepolia contract
 	 * @param _loanAdvertisementBook Address of the LoanAdvertisementBook contract
+	 * @param _referralCode Referral code for Aave interactions
+	 * @param _ghoToken Address of the GHO token
+	 * @param _debtGhoToken Address of the Credit Delegation Token for GHO
+	 * @param _pool Address of the Aave pool
 	 * @param _router Address of the router contract
 	 * @param _link Address of the LINK token
 	 */
 	constructor(
-		uint16 _referralCode,
 		address _ghoSafeIDSepolia,
 		address _loanAdvertisementBook,
+		uint16 _referralCode,
+		address _ghoToken,
+		address _debtGhoToken,
+		address _pool,
 		address _router,
-		address _link
+		address _link,
+		address _owner
 	) {
-		REFERRAL_CODE = _referralCode;
 		USER_ACCESS_MANAGER = IAccessManagerSepolia(
-			address(new AccessManagerSepolia(msg.sender))
+			address(new AccessManagerSepolia(_owner))
 		);
 		USER_MAILBOX_ADDRESS = address(new MailboxSepolia(_ghoSafeIDSepolia));
 		USER_LOAN_MANAGER_ADDRESS = address(
@@ -67,10 +70,16 @@ contract SafeSepolia is ISafeSepolia {
 				USER_ACCESS_MANAGER,
 				USER_MAILBOX_ADDRESS,
 				_loanAdvertisementBook,
+				_ghoToken,
+				_debtGhoToken,
 				_router,
 				_link
 			)
 		);
+		REFERRAL_CODE = _referralCode;
+		AAVE_POOL = IPool(_pool);
+		GHO_TOKEN = IERC20(_ghoToken);
+		DEBT_GHO_TOKEN = ICreditDelegationToken(_debtGhoToken);
 	}
 
 	/// @dev Throws if called by any account other than the owner.
@@ -122,13 +131,20 @@ contract SafeSepolia is ISafeSepolia {
 		address payable _to,
 		uint256 _amount
 	) external payable onlyOwner {
+		// Check if the contract has enough ETH
 		if (address(this).balance < _amount) {
 			revert NotEnoughBalance(address(0), _amount, address(this).balance);
 		}
+
+		// Transfer the ETH to the specified address
 		(bool sent, bytes memory data) = _to.call{ value: _amount }("");
+
+		// Revert if the transfer failed
 		if (!sent) {
 			revert ETHTtransferFailed(data);
 		}
+
+		// Emit event
 		emit ETHWithdrawnFromSafe(_amount, _to);
 	}
 
@@ -143,6 +159,7 @@ contract SafeSepolia is ISafeSepolia {
 		address _token,
 		uint256 _amount
 	) external onlyOwner {
+		// Check if the contract has enough tokens
 		if (IERC20(_token).balanceOf(address(this)) < _amount) {
 			revert NotEnoughBalance(
 				_token,
@@ -150,7 +167,11 @@ contract SafeSepolia is ISafeSepolia {
 				IERC20(_token).balanceOf(address(this))
 			);
 		}
+
+		// Transfer the tokens to the specified address
 		IERC20(_token).transfer(_to, _amount);
+
+		// Emit event
 		emit ERC20WithdrawnFromSafe(_token, _amount, _to);
 	}
 
@@ -167,8 +188,13 @@ contract SafeSepolia is ISafeSepolia {
 				IERC20(_token).balanceOf(address(this))
 			);
 		}
-		IERC20(_token).approve(address(POOL), _amount);
-		POOL.supply(_token, _amount, address(this), REFERRAL_CODE);
+		// Approve the Aave pool to spend the token
+		IERC20(_token).approve(address(AAVE_POOL), _amount);
+
+		// Supply the token to Aave
+		AAVE_POOL.supply(_token, _amount, address(this), REFERRAL_CODE);
+
+		// Emit event
 		emit TokenSuppliedToAave(_token, _amount);
 	}
 
@@ -181,7 +207,10 @@ contract SafeSepolia is ISafeSepolia {
 		address _token,
 		uint256 _amount
 	) external onlyOwner {
-		POOL.withdraw(_token, _amount, address(this));
+		// Withdraw the token from Aave
+		AAVE_POOL.withdraw(_token, _amount, address(this));
+
+		// Emit event
 		emit TokenWithdrawnFromAave(_token, _amount);
 	}
 
@@ -196,13 +225,16 @@ contract SafeSepolia is ISafeSepolia {
 		uint256 _amount,
 		uint256 _interestRateMode
 	) external onlyOwner {
-		POOL.borrow(
+		// Borrow the token from Aave
+		AAVE_POOL.borrow(
 			_token,
 			_amount,
 			_interestRateMode,
 			REFERRAL_CODE,
 			address(this)
 		);
+
+		// Emit event
 		emit TokenBorrowedFromAave(_token, _amount);
 	}
 
@@ -217,7 +249,13 @@ contract SafeSepolia is ISafeSepolia {
 		uint256 _amount,
 		uint256 _rateMode
 	) external onlyOwner {
-		POOL.repay(_token, _amount, _rateMode, address(this));
+		// Approve the Aave pool to spend the token
+		IERC20(_token).approve(address(AAVE_POOL), _amount);
+
+		// Repay the token to Aave
+		AAVE_POOL.repay(_token, _amount, _rateMode, address(this));
+
+		// Emit event
 		emit TokenRepaidToAave(_token, _amount);
 	}
 
@@ -226,13 +264,16 @@ contract SafeSepolia is ISafeSepolia {
 	 * @param _amount Amount of GHO to borrow
 	 */
 	function borrowGho(uint256 _amount) external onlyOwner {
-		POOL.borrow(
+		// Borrow GHO from Aave
+		AAVE_POOL.borrow(
 			address(GHO_TOKEN),
 			_amount,
 			2,
 			REFERRAL_CODE,
 			address(this)
 		);
+
+		// Emit event
 		emit TokenBorrowedFromAave(address(GHO_TOKEN), _amount);
 	}
 
@@ -241,7 +282,13 @@ contract SafeSepolia is ISafeSepolia {
 	 * @param _amount Amount of GHO to repay
 	 */
 	function repayGho(uint256 _amount) external onlyOwner {
-		POOL.repay(address(GHO_TOKEN), _amount, 2, address(this));
+		// Approve the Aave pool to spend GHO
+		IERC20(address(GHO_TOKEN)).approve(address(AAVE_POOL), _amount);
+
+		// Repay GHO to Aave
+		AAVE_POOL.repay(address(GHO_TOKEN), _amount, 2, address(this));
+
+		// Emit event
 		emit TokenRepaidToAave(address(GHO_TOKEN), _amount);
 	}
 
@@ -254,10 +301,15 @@ contract SafeSepolia is ISafeSepolia {
 		address _delegatee,
 		uint256 _amount
 	) external {
+		// Check if the caller is the LoanManager contract
 		if (msg.sender != USER_LOAN_MANAGER_ADDRESS) {
 			revert UnauthorizedAccess(msg.sender);
 		}
+
+		// Approve the delegatee to spend GHO
 		DEBT_GHO_TOKEN.approveDelegation(_delegatee, _amount);
+
+		// Emit event
 		emit CreditDelegateApproved(_delegatee, _amount);
 	}
 

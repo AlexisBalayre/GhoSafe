@@ -34,4 +34,10 @@ interface IGhoSafeAccessManagerSepolia is IAccessControlDefaultAdminRules {
 	 * @return  bytes32  .
 	 */
 	function LOAN_PUBLISHER_ROLE() external view returns (bytes32);
+
+	/**
+	 * @notice Returns the role identifier for the IS_WHITELISTED_ROLE.
+	 * @return  bytes32  .
+	 */
+	function IS_WHITELISTED_ROLE() external view returns (bytes32);
 }

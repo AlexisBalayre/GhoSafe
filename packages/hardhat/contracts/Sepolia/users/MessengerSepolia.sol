@@ -14,7 +14,7 @@ import { IAccessManagerSepolia } from "../interfaces/IAccessManagerSepolia.sol";
 /**
  * @title MessengerSepolia Contract
  * @author GhoSafe Protocol
- * @notice Contract for sending/receiving string data across chains.
+ * @notice Contract for transferring messages between chains
  * @dev This contract should be deployed by the SafeSepolia contract.
  */
 contract MessengerSepolia is IMessengerSepolia, CCIPReceiver {
@@ -225,10 +225,6 @@ contract MessengerSepolia is IMessengerSepolia, CCIPReceiver {
 		loanData[response.loanId].lastAction = response.action;
 		loanData[response.loanId].lastReceivedMessageId = any2EvmMessage
 			.messageId;
-		messageIdToText[any2EvmMessage.messageId] = abi.decode(
-			any2EvmMessage.data,
-			(string)
-		);
 
 		// Emit an event with message details
 		emit MessageReceived(

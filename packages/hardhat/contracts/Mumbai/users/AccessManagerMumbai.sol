@@ -3,18 +3,19 @@
 pragma solidity 0.8.23;
 
 import { AccessControlDefaultAdminRules } from "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol";
+import { IAccessManagerMumbai } from "../interfaces/IAccessManagerMumbai.sol";
 
 /**
  * @title AccessManagerMumbai Contract
  * @author GhoSafe Protocol
  * @notice Contract for setting up access to users contracts
  */
-contract AccessManagerMumbai is AccessControlDefaultAdminRules {
+contract AccessManagerMumbai is
+	AccessControlDefaultAdminRules,
+	IAccessManagerMumbai
+{
 	/// @notice Owner role
 	bytes32 public constant OWNER_ROLE = keccak256("OWNER_ROLE");
-
-	/// @notice Unauthorized access error.
-	error UnauthorizedAccess(address caller);
 
 	/**
 	 * @notice Constructor
@@ -32,6 +33,16 @@ contract AccessManagerMumbai is AccessControlDefaultAdminRules {
 	}
 
 	/**
+	 * @dev Throws if called by any account other than the default admin.
+	 */
+	modifier onlyAdmin() {
+		if (!hasRole(DEFAULT_ADMIN_ROLE, _msgSender())) {
+			revert UnauthorizedAccess(_msgSender());
+		}
+		_;
+	}
+
+	/**
 	 * @notice Grant owner role to a new address
 	 * @param _newOwner Address of the new owner
 	 */
@@ -45,15 +56,5 @@ contract AccessManagerMumbai is AccessControlDefaultAdminRules {
 	 */
 	function revokeOwnerRole(address _oldOwner) external onlyAdmin {
 		_revokeRole(OWNER_ROLE, _oldOwner);
-	}
-
-	/**
-	 * @dev Throws if called by any account other than the default admin.
-	 */
-	modifier onlyAdmin() {
-		if (!hasRole(DEFAULT_ADMIN_ROLE, _msgSender())) {
-			revert UnauthorizedAccess(_msgSender());
-		}
-		_;
 	}
 }

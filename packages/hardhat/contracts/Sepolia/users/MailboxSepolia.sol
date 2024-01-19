@@ -5,6 +5,12 @@ pragma solidity 0.8.23;
 import { IMailboxSepolia } from "../interfaces/IMailboxSepolia.sol";
 import { IGhoSafeIDSepolia } from "../interfaces/IGhoSafeIDSepolia.sol";
 
+/**
+ * @title MailboxSepolia Contract
+ * @author GhoSafe Protocol
+ * @notice Contract used by delegees to create loan requests
+ * @dev This contract should be deployed by the SafeSepolia contract
+ */
 contract MailboxSepolia is IMailboxSepolia {
 	/// @notice Loans request counter.
 	uint256 public loanRequestsCounter;
@@ -28,13 +34,24 @@ contract MailboxSepolia is IMailboxSepolia {
 	}
 
 	/**
+	 * @notice Returns the loan request.
+	 * @param _loanRequestId ID of the loan request.
+	 * @return loanRequestData Loan request struct.
+	 */
+	function getLoanRequest(
+		uint256 _loanRequestId
+	) external view returns (LoanRequest memory loanRequestData) {
+		loanRequestData = loanRequests[_loanRequestId];
+	}
+
+	/**
 	 * @notice Creates a loan request.
 	 * @param _collateralAmountOrId Amount or ID of the collateral asset.
 	 * @param _collateralAddress Address of the collateral asset.
 	 * @param _collateralType Type of the collateral asset: 0 for ERC20, 1 for ERC721.
 	 * @param _collateralChainId Chain ID of the collateral asset.
 	 * @param _amountToBorrow Amount of loan to borrow in GHO tokens.
-     * @param _loanDuration Duration of the loan in seconds.
+	 * @param _loanDuration Duration of the loan in seconds.
 	 * @return loanRequestId ID of the loan request.
 	 */
 	function loanRequest(
@@ -43,15 +60,15 @@ contract MailboxSepolia is IMailboxSepolia {
 		bool _collateralType,
 		uint64 _collateralChainId,
 		uint256 _amountToBorrow,
-        uint256 _loanDuration
+		uint256 _loanDuration
 	) external returns (uint256 loanRequestId) {
-        if (GHO_SAFE_ID.balanceOf(msg.sender) == 0) {
-            revert NoGhoSafeIDFound(msg.sender);
-        }
+		if (GHO_SAFE_ID.balanceOf(msg.sender) == 0) {
+			revert NoGhoSafeIDFound(msg.sender);
+		}
 		loanRequestId = loanRequestsCounter++;
 		loanRequests[loanRequestId] = LoanRequest(
 			_amountToBorrow,
-            _loanDuration,
+			_loanDuration,
 			_collateralAmountOrId,
 			_collateralAddress,
 			msg.sender,
@@ -66,18 +83,7 @@ contract MailboxSepolia is IMailboxSepolia {
 			_collateralChainId,
 			_collateralType,
 			_amountToBorrow,
-            _loanDuration
+			_loanDuration
 		);
-	}
-
-	/**
-	 * @notice Returns the loan request.
-	 * @param _loanRequestId ID of the loan request.
-	 * @return loanRequestData Loan request struct.
-	 */
-	function getLoanRequest(
-		uint256 _loanRequestId
-	) external view returns (LoanRequest memory loanRequestData) {
-		loanRequestData = loanRequests[_loanRequestId];
 	}
 }
