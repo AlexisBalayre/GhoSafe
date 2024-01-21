@@ -1,12 +1,12 @@
-import abiAccessManager from "../../hardhat/artifacts/contracts/Sepolia/users/AccessManagerSepolia.sol/AccessManagerSepolia.json";
-import abiLoanManager from "../../hardhat/artifacts/contracts/Sepolia/users/LoanManagerSepolia.sol/LoanManagerSepolia.json";
-import abiLoanSafe from "../../hardhat/artifacts/contracts/Sepolia/users/LoanSafeSepolia.sol/LoanSafeSepolia.json";
-import abiMailbox from "../../hardhat/artifacts/contracts/Sepolia/users/MailboxSepolia.sol/MailboxSepolia.json";
-import abiMessenger from "../../hardhat/artifacts/contracts/Sepolia/users/MessengerSepolia.sol/MessengerSepolia.json";
-import abiAccessManagerMumbai from "../../hardhat/artifacts/contracts/Mumbai/users/AccessManagerMumbai.sol/AccessManagerMumbai.json";
-import abiMessengerMumbai from "../../hardhat/artifacts/contracts/Mumbai/users/MessengerMumbai.sol/MessengerMumbai.json";
-import abiLoanSafeMumbai from "../../hardhat/artifacts/contracts/Mumbai/users/LoanSafeMumbai.sol/LoanSafeMumbai.json";
-import abiBoredApeYachtClub from "../../hardhat/artifacts/contracts/Sepolia/users/NftTest.sol/BoredApeYachtClub.json";
+import abiAccessManager from "~~/public/abis/AccessManagerSepolia.json";
+import abiLoanManager from "~~/public/abis/LoanManagerSepolia.json";
+import abiLoanSafe from "~~/public/abis/LoanSafeSepolia.json";
+import abiMailbox from "~~/public/abis/MailboxSepolia.json";
+import abiMessenger from "~~/public/abis/MessengerSepolia.json";
+import abiAccessManagerMumbai from "~~/public/abis/AccessManagerMumbai.json";
+import abiMessengerMumbai from "~~/public/abis/MessengerMumbai.json";   
+import abiLoanSafeMumbai from "~~/public/abis/LoanSafeMumbai.json";
+import abiBoredApeYachtClub from "~~/public/abis/BoredApeYachtClub.json";
 
 const externalContracts = {
     11155111: {

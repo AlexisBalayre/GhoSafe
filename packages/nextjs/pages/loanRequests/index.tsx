@@ -5,9 +5,9 @@ import { useContractRead,usePublicClient, useWalletClient, useNetwork } from 'wa
 import LoanRequest, { LoanRequestProps } from '../../components/LoanRequest';
 import { MetaHeader } from '../../components/MetaHeader';
 import { Address as AddresScaffold } from "~~/components/scaffold-eth";
-import safeABI from '../../../hardhat/artifacts/contracts/Sepolia/users/SafeSepolia.sol/SafeSepolia.json';
-import loanManagerABI from '../../../hardhat/artifacts/contracts/Sepolia/users/LoanManagerSepolia.sol/LoanManagerSepolia.json';
-import mailboxABI from '../../../hardhat/artifacts/contracts/Sepolia/users/MailboxSepolia.sol/MailboxSepolia.json';
+import safeABI from '~~/public/abis/SafeSepolia.json';
+import loanManagerABI from '~~/public/abis//LoanManagerSepolia.json';
+import mailboxABI from '~~/public/abis/MailboxSepolia.json';
 import { DocumentArrowDownIcon } from '@heroicons/react/24/outline';
 import { WalletNotConnectedModal } from '~~/components/WalletNotConnectedModal';
 import { WrongChainModal } from '~~/components/WrongChainModal';

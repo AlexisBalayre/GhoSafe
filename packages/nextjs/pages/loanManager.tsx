@@ -10,8 +10,8 @@ import {
 import { notification } from "~~/utils/scaffold-eth";
 import { useTransactor } from '~~/hooks/scaffold-eth';
 import { Address as AddresScaffold } from "~~/components/scaffold-eth";
-import safeABI from '../../hardhat/artifacts/contracts/Sepolia/users/SafeSepolia.sol/SafeSepolia.json';
-import loanManagerABI from '../../hardhat/artifacts/contracts/Sepolia/users/LoanManagerSepolia.sol/LoanManagerSepolia.json';
+import safeABI from '~~/public/abis/SafeSepolia.json';
+import loanManagerABI from '~~/public/abis/LoanManagerSepolia.json';
 import { DocumentArrowDownIcon } from '@heroicons/react/24/outline';
 import { WalletNotConnectedModal } from '~~/components/WalletNotConnectedModal';
 import { WrongChainModal } from '~~/components/WrongChainModal';
