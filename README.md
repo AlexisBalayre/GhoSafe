@@ -15,9 +15,7 @@ GhoSafe is an innovative DeFi lending platform designed to revolutionise the blo
 
 GhoSafe is competing for several prizes in the hackathon, including:
 
-- **Aave Payments Prize**: For building tooling to simplify GHO token transactions.
 - **Aave Vaults Prize**: For utilising smart contract vaults in innovative ways with GHO.
-- **Aave Facilitators Prize**: For potential facilitators for GHO.
 - **Aave Integration Prize**: For integrating GHO into GhoSafe's functionalities.
 - **Chainlink Prize**: For meaningfully using Chainlink's CCIP with GHO.
 - **Family's Pool Prize**: For integrating ConnectKit.
