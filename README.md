@@ -11,6 +11,8 @@ GhoSafe is an innovative DeFi lending platform designed to revolutionise the blo
 - **ConnectKit Integration**: Offers a seamless user experience for wallet connections, powered by Family's ConnectKit.
 - **Vaults and Credit Delegation**: Users can create vaults for managing GHO tokens and delegate credit securely.
 
+<img width="1113" alt="ghosafe" src="https://github.com/AlexisBalayre/GhoSafe/assets/60859013/af80a101-09fc-4bbd-8754-497e7ce7323f">
+
 ## Prizes Qualification
 
 GhoSafe is competing for several prizes in the hackathon, including:
@@ -20,9 +22,70 @@ GhoSafe is competing for several prizes in the hackathon, including:
 - **Chainlink Prize**: For meaningfully using Chainlink's CCIP with GHO.
 - **Family's Pool Prize**: For integrating ConnectKit.
 
+## GhoSafe Smart Contracts Overview
+
+GhoSafe leverages a series of smart contracts to provide a comprehensive DeFi lending platform. Below is an overview of each contract and its utility within the ecosystem.
+
+<img width="1511" alt="Screenshot 2024-01-21 at 16 59 36" src="https://github.com/AlexisBalayre/GhoSafe/assets/60859013/fdc32886-8c70-46ad-9a70-8e6892b0a3f8">
+<img width="1511" alt="Screenshot 2024-01-21 at 16 59 36" src="https://github.com/AlexisBalayre/GhoSafe/assets/60859013/04e40d20-fdf2-4c36-8557-4e464c06e4af">
+
+### Protocol Contracts (Deployed on Sepolia)
+
+#### `GhoSafeAccessManagerSepolia`
+- **Purpose**: Manages access control within the GhoSafe protocol.
+- **Functionality**: Grants and revokes roles to different entities, ensuring secure and authorized interactions with the protocol.
+
+#### `GhoSafeIDSepolia`
+- **Purpose**: Manages non-transferable tokens associated with users' credit scores.
+- **Functionality**: Assigns and updates credit scores based on users' borrowing and repayment behaviors, facilitating a trust-based lending system.
+
+#### `GhoSafeLoanAdvertisementBookSepolia`
+- **Purpose**: Handles the publication and management of loan advertisements.
+- **Functionality**: Allows users to advertise available loans, setting terms such as interest rates and durations, thereby connecting lenders and borrowers.
+
+### User Contracts (Deployed by Each User on Sepolia)
+
+#### `AccessManagerSepolia`
+- **Purpose**: Sets up and manages access to user-specific contracts.
+- **Functionality**: Controls permissions for user-contract interactions, enhancing security and personalization.
+
+#### `SafeSepolia`
+- **Purpose**: Acts as a wallet contract for managing funds and interacting with Aave.
+- **Functionality**: Enables users to deposit, withdraw, supply to Aave, borrow from Aave, and manage GHO tokens.
+
+#### `LoanManagerSepolia`
+- **Purpose**: Oversees the management of loans.
+- **Functionality**: Facilitates loan creation, approval, repayment, and liquidation processes, ensuring smooth loan lifecycle management.
+
+#### `LoanSafeSepolia`
+- **Purpose**: Safekeeps loans collateral.
+- **Functionality**: Holds and manages collateral for loans, ensuring security and proper handling during loan lifecycles.
+
+#### `MailboxSepolia`
+- **Purpose**: Used by delegees to create loan requests.
+- **Functionality**: Allows borrowers to request loans, detailing their terms and linking to their credit scores for lender assessment.
+
+#### `MessengerSepolia`
+- **Purpose**: Facilitates transferring messages and data between chains.
+- **Functionality**: Employs Chainlink CCIP for cross-chain interactions, crucial for managing loans with cross-chain collateral.
+
+### User Contracts (Deployed on Mumbai)
+
+#### `AccessManagerMumbai`
+- **Purpose**: Manages access for user contracts on the Mumbai chain.
+- **Functionality**: Similar to its Sepolia counterpart, it controls permissions for user-contract interactions on Mumbai.
+
+#### `MessengerMumbai`
+- **Purpose**: Handles cross-chain messaging specific to the Mumbai chain.
+- **Functionality**: Works alongside `MessengerSepolia` to facilitate cross-chain loan operations and collateral management.
+
+#### `LoanSafeMumbai`
+- **Purpose**: Manages collateral for loans on the Mumbai chain.
+- **Functionality**: Ensures the safekeeping and proper handling of collateral for cross-chain loans initiated on Mumbai.
+
 ## Deployments
 
-### Sepolia Testnet
+### Sepolia Testnet (Core Protocol)
 
 | Contract                            | Address                                                                                                                       |
 | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -36,7 +99,7 @@ GhoSafe is competing for several prizes in the hackathon, including:
 | MailboxSepolia                      | [0x93446087674906C8d8CEcBfC17fCFCe6E59551D6](https://sepolia.etherscan.io/address/0x93446087674906C8d8CEcBfC17fCFCe6E59551D6) |
 | MessengerSepolia                    | [0x3E54F172049736a85bB427f7cAA01B98Faa7F7B2](https://sepolia.etherscan.io/address/0x3E54F172049736a85bB427f7cAA01B98Faa7F7B2) |
 
-### Mumbai Testnet
+### Mumbai Testnet (Cross-Chain Collateral)
 
 | Contract            | Address                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
