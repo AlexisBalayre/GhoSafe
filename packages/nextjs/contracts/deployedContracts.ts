@@ -4,6 +4,1852 @@
  */
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
-const deployedContracts = {} as const;
+const deployedContracts = {
+  11155111: {
+    GhoSafeAccessManagerSepolia: {
+      address: "0x124AE849075ff729Ffdf49a49519777206F6fF64",
+      abi: [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [],
+          name: "AccessControlBadConfirmation",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint48",
+              name: "schedule",
+              type: "uint48",
+            },
+          ],
+          name: "AccessControlEnforcedDefaultAdminDelay",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "AccessControlEnforcedDefaultAdminRules",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "defaultAdmin",
+              type: "address",
+            },
+          ],
+          name: "AccessControlInvalidDefaultAdmin",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+            {
+              internalType: "bytes32",
+              name: "neededRole",
+              type: "bytes32",
+            },
+          ],
+          name: "AccessControlUnauthorizedAccount",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint8",
+              name: "bits",
+              type: "uint8",
+            },
+            {
+              internalType: "uint256",
+              name: "value",
+              type: "uint256",
+            },
+          ],
+          name: "SafeCastOverflowedUintDowncast",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [],
+          name: "DefaultAdminDelayChangeCanceled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint48",
+              name: "newDelay",
+              type: "uint48",
+            },
+            {
+              indexed: false,
+              internalType: "uint48",
+              name: "effectSchedule",
+              type: "uint48",
+            },
+          ],
+          name: "DefaultAdminDelayChangeScheduled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [],
+          name: "DefaultAdminTransferCanceled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newAdmin",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint48",
+              name: "acceptSchedule",
+              type: "uint48",
+            },
+          ],
+          name: "DefaultAdminTransferScheduled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "role",
+              type: "bytes32",
+            },
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "previousAdminRole",
+              type: "bytes32",
+            },
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "newAdminRole",
+              type: "bytes32",
+            },
+          ],
+          name: "RoleAdminChanged",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "role",
+              type: "bytes32",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+          ],
+          name: "RoleGranted",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "role",
+              type: "bytes32",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+          ],
+          name: "RoleRevoked",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "ADMIN_ROLE",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "CREDIT_SCORE_OFFICER_ROLE",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "DEFAULT_ADMIN_ROLE",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "LOAN_PUBLISHER_ROLE",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "MINTER_ROLE",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "acceptDefaultAdminTransfer",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newAdmin",
+              type: "address",
+            },
+          ],
+          name: "beginDefaultAdminTransfer",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "cancelDefaultAdminTransfer",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint48",
+              name: "newDelay",
+              type: "uint48",
+            },
+          ],
+          name: "changeDefaultAdminDelay",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "defaultAdmin",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "defaultAdminDelay",
+          outputs: [
+            {
+              internalType: "uint48",
+              name: "",
+              type: "uint48",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "defaultAdminDelayIncreaseWait",
+          outputs: [
+            {
+              internalType: "uint48",
+              name: "",
+              type: "uint48",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "role",
+              type: "bytes32",
+            },
+          ],
+          name: "getRoleAdmin",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "role",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "grantRole",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "role",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "hasRole",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "pendingDefaultAdmin",
+          outputs: [
+            {
+              internalType: "address",
+              name: "newAdmin",
+              type: "address",
+            },
+            {
+              internalType: "uint48",
+              name: "schedule",
+              type: "uint48",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "pendingDefaultAdminDelay",
+          outputs: [
+            {
+              internalType: "uint48",
+              name: "newDelay",
+              type: "uint48",
+            },
+            {
+              internalType: "uint48",
+              name: "schedule",
+              type: "uint48",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "role",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "renounceRole",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "role",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "revokeRole",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "rollbackDefaultAdminDelay",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "interfaceId",
+              type: "bytes4",
+            },
+          ],
+          name: "supportsInterface",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        DEFAULT_ADMIN_ROLE:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        acceptDefaultAdminTransfer:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        beginDefaultAdminTransfer:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        cancelDefaultAdminTransfer:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        changeDefaultAdminDelay:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        defaultAdmin:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        defaultAdminDelay:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        defaultAdminDelayIncreaseWait:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        getRoleAdmin:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        grantRole:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        hasRole:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        owner:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        pendingDefaultAdmin:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        pendingDefaultAdminDelay:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        renounceRole:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        revokeRole:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        rollbackDefaultAdminDelay:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+        supportsInterface:
+          "@openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol",
+      },
+    },
+    GhoSafeIDSepolia: {
+      address: "0x77D08C620728194fF1A4b3dA458f04975568CF1e",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_symbol",
+              type: "string",
+            },
+            {
+              internalType: "contract IGhoSafeAccessManagerSepolia",
+              name: "_accessManager",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "GhoSafeIdAlreadyMinted",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "expected",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "actual",
+              type: "uint256",
+            },
+          ],
+          name: "InvalidArgumentsLength",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "TokenDoesNotExist",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferNotAllowed",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "caller",
+              type: "address",
+            },
+          ],
+          name: "UnauthorizedAccess",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "creditScore",
+              type: "uint256",
+            },
+          ],
+          name: "CreditScoreUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "creditScore",
+              type: "uint256",
+            },
+          ],
+          name: "GhoSafeIdMinted",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "approve",
+          outputs: [],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "balance",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address[]",
+              name: "_to",
+              type: "address[]",
+            },
+            {
+              internalType: "uint256[]",
+              name: "_initialCreditScore",
+              type: "uint256[]",
+            },
+            {
+              internalType: "bytes[]",
+              name: "_tokenURI",
+              type: "bytes[]",
+            },
+          ],
+          name: "batchSafeMin",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "creditScoreDataOf",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "loansCount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "totalAmountBorrowed",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "totalAmountRepaid",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "creditScore",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct IGhoSafeIDSepolia.CreditScoreData",
+              name: "creditScoreData",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_owner",
+              type: "address",
+            },
+          ],
+          name: "ghoSafeIdOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "isApprovedForAll",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "isApproved",
+              type: "bool",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "name",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ownerOf",
+          outputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_initialCreditScore",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "_tokenURI",
+              type: "bytes",
+            },
+          ],
+          name: "safeMint",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "",
+              type: "bytes",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          name: "setApprovalForAll",
+          outputs: [],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "_interfaceId",
+              type: "bytes4",
+            },
+          ],
+          name: "supportsInterface",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "isSupported",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "symbol",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "transferFrom",
+          outputs: [],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_newCreditScore",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_loansCountIncrement",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_totalAmountBorrowedIncrement",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_totalAmountRepaidIncrement",
+              type: "uint256",
+            },
+          ],
+          name: "updateCreditScore",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        balanceOf: "contracts/Sepolia/interfaces/IGhoSafeIDSepolia.sol",
+        batchSafeMin: "contracts/Sepolia/interfaces/IGhoSafeIDSepolia.sol",
+        creditScoreDataOf: "contracts/Sepolia/interfaces/IGhoSafeIDSepolia.sol",
+        ghoSafeIdOf: "contracts/Sepolia/interfaces/IGhoSafeIDSepolia.sol",
+        ownerOf: "contracts/Sepolia/interfaces/IGhoSafeIDSepolia.sol",
+        safeMint: "contracts/Sepolia/interfaces/IGhoSafeIDSepolia.sol",
+        supportsInterface:
+          "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+        tokenURI: "contracts/Sepolia/interfaces/IGhoSafeIDSepolia.sol",
+        updateCreditScore: "contracts/Sepolia/interfaces/IGhoSafeIDSepolia.sol",
+      },
+    },
+    GhoSafeLoanAdvertisementBookSepolia: {
+      address: "0x8E3cDEA3e6e439a49c7958d0bB76254E786b5266",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "contract IGhoSafeAccessManagerSepolia",
+              name: "_accessManager",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "caller",
+              type: "address",
+            },
+          ],
+          name: "UnauthorizedAccess",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "loanId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "maxLoanAmount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "maxDuration",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "interestRate",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "safeAddress",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "loanManagerAddress",
+              type: "address",
+            },
+          ],
+          name: "LoanAdvertisementPublished",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "loanId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "maxLoanAmount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "maxDuration",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "interestRate",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "isAvailable",
+              type: "bool",
+            },
+          ],
+          name: "LoanAdvertisementUpdated",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_loanId",
+              type: "uint256",
+            },
+          ],
+          name: "getLoanAdvertisementData",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "timestampLastUpdate",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "maxLoanAmount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "maxDuration",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "interestRate",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "safeAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "loanManagerAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "bool",
+                  name: "isAvailable",
+                  type: "bool",
+                },
+              ],
+              internalType:
+                "struct IGhoSafeLoanAdvertisementBookSepolia.LoanAdvertisement",
+              name: "loanAdvertisementData",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_maxLoanAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_maxDuration",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_interestRate",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_safeAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_loanManagerAddress",
+              type: "address",
+            },
+          ],
+          name: "publishLoanAdvertisement",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "loanId",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_loanId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_maxLoanAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_maxDuration",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_interestRate",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "_isAvailable",
+              type: "bool",
+            },
+          ],
+          name: "updateLoanAdvertisementData",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        getLoanAdvertisementData:
+          "contracts/Sepolia/interfaces/IGhoSafeLoanAdvertisementBookSepolia.sol",
+        publishLoanAdvertisement:
+          "contracts/Sepolia/interfaces/IGhoSafeLoanAdvertisementBookSepolia.sol",
+        updateLoanAdvertisementData:
+          "contracts/Sepolia/interfaces/IGhoSafeLoanAdvertisementBookSepolia.sol",
+      },
+    },
+    SafeSepolia: {
+      address: "0x1eD8fd8e8Ad26a88bB5261068776f73ECad9a6f3",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "uint16",
+              name: "_referralCode",
+              type: "uint16",
+            },
+            {
+              internalType: "address",
+              name: "_ghoSafeIDSepolia",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_loanAdvertisementBook",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_router",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_link",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes",
+              name: "data",
+              type: "bytes",
+            },
+          ],
+          name: "ETHTtransferFailed",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "balance",
+              type: "uint256",
+            },
+          ],
+          name: "NotEnoughBalance",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "caller",
+              type: "address",
+            },
+          ],
+          name: "UnauthorizedAccess",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "delegatee",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "CreditDelegateApproved",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+          ],
+          name: "ERC20WithdrawnFromSafe",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+          ],
+          name: "ETHWithdrawnFromSafe",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "OwnerAdded",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "OwnerRemoved",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+          ],
+          name: "ReceivedETH",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "TokenBorrowedFromAave",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "TokenRepaidToAave",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "TokenSuppliedToAave",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "TokenWithdrawnFromAave",
+          type: "event",
+        },
+        {
+          stateMutability: "payable",
+          type: "fallback",
+        },
+        {
+          inputs: [],
+          name: "USER_ACCESS_MANAGER",
+          outputs: [
+            {
+              internalType: "contract IAccessManagerSepolia",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "USER_LOAN_MANAGER_ADDRESS",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "USER_MAILBOX_ADDRESS",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_owner",
+              type: "address",
+            },
+          ],
+          name: "addOwner",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_delegatee",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "approveDelegateCreditGho",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_token",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_interestRateMode",
+              type: "uint256",
+            },
+          ],
+          name: "borrowFromAave",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "borrowGho",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address[]",
+              name: "_tokens",
+              type: "address[]",
+            },
+          ],
+          name: "getSafeBalances",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "balances",
+              type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_owner",
+              type: "address",
+            },
+          ],
+          name: "removeOwner",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "repayGho",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_token",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_rateMode",
+              type: "uint256",
+            },
+          ],
+          name: "repayToAave",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_token",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "supplyToAave",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address payable",
+              name: "_to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "withdrawETHFromSafe",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_token",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "withdrawFromAave",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address payable",
+              name: "_to",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_token",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "withdrawFromSafe",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
+        },
+      ],
+      inheritedFunctions: {
+        approveDelegateCreditGho:
+          "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+        borrowFromAave: "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+        borrowGho: "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+        getSafeBalances: "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+        repayGho: "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+        repayToAave: "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+        supplyToAave: "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+        withdrawETHFromSafe: "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+        withdrawFromAave: "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+        withdrawFromSafe: "contracts/Sepolia/interfaces/ISafeSepolia.sol",
+      },
+    },
+  },
+} as const;
 
 export default deployedContracts satisfies GenericContractsDeclaration;

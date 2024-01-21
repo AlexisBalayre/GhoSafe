@@ -55,27 +55,32 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   });
   const ghosafeLoanAdvertisementBookSepolia = await hre.ethers.getContract("GhoSafeLoanAdvertisementBookSepolia", deployer); */
 
-  /* // Deploy Safe
-  await deploy("SafeSepolia", {
+  // Deploy Safe Contract
+  /* await deploy("SafeSepolia", {
     args: [
-      0,
-      "0x77D08C620728194fF1A4b3dA458f04975568CF1e",
-      "0x8E3cDEA3e6e439a49c7958d0bB76254E786b5266",
+      "0x77D08C620728194fF1A4b3dA458f04975568CF1e", // GhoSafeID
+      "0x8E3cDEA3e6e439a49c7958d0bB76254E786b5266", // GhoSafeLoanAdvertisementBook
+      0, // Referral code
+      "0xc4bF5CbDaBE595361438F8c6a187bDc330539c60", // GhoToken
+      "0x67ae46EF043F7A4508BD1d6B94DB6c33F0915844", // DebtGhoToken
+      "0x6Ae43d3271ff6888e7Fc43Fd7321a503ff738951", // Pool
       "0x0BF3dE8c5D3e8A2B34D2BEeB17ABfCeBaf363A59", // Router
       "0x779877A7B0D9E8603169DdbD7836e478b4624789", // Link
+      deployer // Owner
     ],
+    from: deployer,
+    log: true,
+    autoMine: true,
+  });  */
+
+
+  /* await deploy("BoredApeYachtClub", {
     from: deployer,
     log: true,
     autoMine: true,
   }); */
 
-  await deploy("BoredApeYachtClub", {
-    from: deployer,
-    log: true,
-    autoMine: true,
-  });
-
-  /* await deploy("LoanSafeMumbai", {
+  await deploy("LoanSafeMumbai", {
     args: [
       "0x1035CabC275068e0F4b745A29CEDf38E13aF41b1",
       "0x326C977E6efc84E512bB9C30f76E30c160eD06FB"
@@ -83,7 +88,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     from: deployer,
     log: true,
     autoMine: true,
-  }); */
+  }); 
 
   // Get the deployed contract
   // const yourContract = await hre.ethers.getContract("YourContract", deployer);

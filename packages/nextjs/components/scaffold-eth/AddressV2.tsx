@@ -3,9 +3,8 @@ import Link from "next/link";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Address as AddressType, isAddress } from "viem";
 import { hardhat } from "viem/chains";
-import { useEnsAvatar, useEnsName } from "wagmi";
+import { useEnsName } from "wagmi";
 import { CheckCircleIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
-import { MyCustomAvatar } from "~~/components/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
 
@@ -16,42 +15,22 @@ type AddressProps = {
   size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
 };
 
-const blockieSizeMap = {
-  xs: 6,
-  sm: 7,
-  base: 8,
-  lg: 9,
-  xl: 10,
-  "2xl": 12,
-  "3xl": 15,
-};
-
 /**
  * Displays an address (or ENS) with a Blockie image and option to copy address.
  */
-export const Address = ({ address, disableAddressLink, format, size = "base" }: AddressProps) => {
+export const AddressV2 = ({ address, disableAddressLink, format, size = "base" }: AddressProps) => {
   const [ens, setEns] = useState<string | null>();
-  const [ensAvatar, setEnsAvatar] = useState<string | null>();
   const [addressCopied, setAddressCopied] = useState(false);
 
   const { targetNetwork } = useTargetNetwork();
 
   const { data: fetchedEns } = useEnsName({ address, enabled: isAddress(address ?? ""), chainId: 1 });
-  const { data: fetchedEnsAvatar } = useEnsAvatar({
-    name: fetchedEns,
-    enabled: Boolean(fetchedEns),
-    chainId: 1,
-    cacheTime: 30_000,
-  });
 
   // We need to apply this pattern to avoid Hydration errors.
   useEffect(() => {
     setEns(fetchedEns);
   }, [fetchedEns]);
 
-  useEffect(() => {
-    setEnsAvatar(fetchedEnsAvatar);
-  }, [fetchedEnsAvatar]);
 
   // Skeleton UI
   if (!address) {
@@ -80,13 +59,6 @@ export const Address = ({ address, disableAddressLink, format, size = "base" }: 
 
   return (
     <div className="flex items-center">
-      <div className="flex-shrink-0">
-        <MyCustomAvatar
-          address={`0x${address}`}
-          ensImage={ensAvatar ?? undefined}
-          size={(blockieSizeMap[size] * 24) / blockieSizeMap["base"]}
-        />
-      </div>
       {disableAddressLink ? (
         <span className={`ml-1.5 text-${size} font-normal`}>{displayAddress}</span>
       ) : targetNetwork.id === hardhat.id ? (
@@ -112,7 +84,6 @@ export const Address = ({ address, disableAddressLink, format, size = "base" }: 
         <CopyToClipboard
           text={address}
           onCopy={() => {
-            navigator.clipboard.writeText(address);
             setAddressCopied(true);
             setTimeout(() => {
               setAddressCopied(false);

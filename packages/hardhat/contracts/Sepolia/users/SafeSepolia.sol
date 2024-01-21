@@ -49,6 +49,7 @@ contract SafeSepolia is ISafeSepolia {
 	 * @param _pool Address of the Aave pool
 	 * @param _router Address of the router contract
 	 * @param _link Address of the LINK token
+	 * @param _owner Address of the owner
 	 */
 	constructor(
 		address _ghoSafeIDSepolia,

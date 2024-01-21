@@ -521,6 +521,9 @@ contract LoanManagerSepolia is ILoanManagerSepolia, ReentrancyGuard {
 		// Deactivate loan.
 		loan.isActive = false;
 
+		// Set credit GHO allowance to 0.
+		USER_SAFE.approveDelegateCreditGho(loan.borrower, 0);
+
 		emit LoanRepaid(_loanId, msg.sender, loan.loanAmount, totalInterest);
 	}
 
@@ -563,6 +566,9 @@ contract LoanManagerSepolia is ILoanManagerSepolia, ReentrancyGuard {
 				borrower: _receiver // The receiver is the liquidator.
 			})
 		);
+
+		// Set credit GHO allowance to 0.
+		USER_SAFE.approveDelegateCreditGho(loan.borrower, 0);
 
 		emit LoanLiquidated(
 			_loanId,
@@ -643,6 +649,9 @@ contract LoanManagerSepolia is ILoanManagerSepolia, ReentrancyGuard {
 		// Deactivate loan.
 		loan.isActive = false;
 
+		// Set credit GHO allowance to 0.
+		USER_SAFE.approveDelegateCreditGho(loan.borrower, 0);
+
 		emit LoanRepaid(_loanId, msg.sender, loan.loanAmount, totalInterest);
 	}
 
@@ -674,6 +683,9 @@ contract LoanManagerSepolia is ILoanManagerSepolia, ReentrancyGuard {
 
 		// Seize collateral.
 		USER_LOAN_SAFE.seizeCollateral(_loanId, _receiver);
+
+		// Set credit GHO allowance to 0.
+		USER_SAFE.approveDelegateCreditGho(loan.borrower, 0);
 
 		emit LoanLiquidated(
 			_loanId,
