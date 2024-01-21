@@ -112,6 +112,7 @@ export const Address = ({ address, disableAddressLink, format, size = "base" }: 
         <CopyToClipboard
           text={address}
           onCopy={() => {
+            navigator.clipboard.writeText(address);
             setAddressCopied(true);
             setTimeout(() => {
               setAddressCopied(false);

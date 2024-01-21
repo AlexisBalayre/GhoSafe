@@ -6,6 +6,7 @@ module.exports = {
   // DaisyUI theme colors
   daisyui: {
     themes: [
+      "forest",
       {
         scaffoldEth: {
           primary: "#93BBFB",

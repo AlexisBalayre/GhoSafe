@@ -6,27 +6,31 @@ import { MetaHeader } from "~~/components/MetaHeader";
 import { ContractUI } from "~~/components/scaffold-eth";
 import { ContractName } from "~~/utils/scaffold-eth/contract";
 import { getAllContracts } from "~~/utils/scaffold-eth/contractsData";
+import { useNetwork } from "wagmi";
 
 const selectedContractStorageKey = "scaffoldEth2.selectedContract";
-const contractsData = getAllContracts();
-const contractNames = Object.keys(contractsData) as ContractName[];
+
 
 const Debug: NextPage = () => {
+  const { chain } = useNetwork();
+  const contractsData = getAllContracts(chain?.id || 11155111);
+  const contractNames = Object.keys(contractsData) as ContractName[];
+
   const [selectedContract, setSelectedContract] = useLocalStorage<ContractName>(
     selectedContractStorageKey,
-    contractNames[0],
+    contractNames[chain?.id === 11155111 ? 0 : 1],
   );
 
   useEffect(() => {
     if (!contractNames.includes(selectedContract)) {
-      setSelectedContract(contractNames[0]);
+      setSelectedContract(contractNames[chain?.id === 11155111 ? 0 : 1]);
     }
   }, [selectedContract, setSelectedContract]);
 
   return (
     <>
       <MetaHeader
-        title="Debug Contracts | Scaffold-ETH 2"
+        title="Debug Contracts | GhoSafe Protocol"
         description="Debug your deployed 🏗 Scaffold-ETH 2 contracts in an easy way"
       />
       <div className="flex flex-col gap-y-6 lg:gap-y-8 py-8 lg:py-12 justify-center items-center">
@@ -38,11 +42,10 @@ const Debug: NextPage = () => {
               <div className="flex flex-row gap-2 w-full max-w-7xl pb-1 px-6 lg:px-10 flex-wrap">
                 {contractNames.map(contractName => (
                   <button
-                    className={`btn btn-secondary btn-sm font-light hover:border-transparent ${
-                      contractName === selectedContract
-                        ? "bg-base-300 hover:bg-base-300 no-animation"
-                        : "bg-base-100 hover:bg-secondary"
-                    }`}
+                    className={`btn btn-secondary btn-sm font-light hover:border-transparent text-base-content ${contractName === selectedContract
+                      ? "bg-base-300 hover:bg-base-300 no-animation"
+                      : "bg-base-100 hover:bg-secondary"
+                      }`}
                     key={contractName}
                     onClick={() => setSelectedContract(contractName)}
                   >
@@ -65,16 +68,6 @@ const Debug: NextPage = () => {
             ))}
           </>
         )}
-      </div>
-      <div className="text-center mt-8 bg-secondary p-10">
-        <h1 className="text-4xl my-0">Debug Contracts</h1>
-        <p className="text-neutral">
-          You can debug & interact with your deployed contracts here.
-          <br /> Check{" "}
-          <code className="italic bg-base-300 text-base font-bold [word-spacing:-0.5rem] px-1">
-            packages / nextjs / pages / debug.tsx
-          </code>{" "}
-        </p>
       </div>
     </>
   );

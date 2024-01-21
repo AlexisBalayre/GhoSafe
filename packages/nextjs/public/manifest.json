@@ -1,5 +1,5 @@
 {
-  "name": "Scaffold-ETH 2 DApp",
-  "description": "A DApp built with Scaffold-ETH",
-  "iconPath": "logo.svg"
+  "name": "GhoSafe",
+  "description": "GhoSafe is an innovative Ethereum-based DeFi lending platform, revolutionizing decentralized lending with its unique integration of GHO tokens and Chainlink for secure, cross-chain financial solutions.",
+  "iconPath": "favicon.ico"
 }

@@ -14,7 +14,9 @@
     "verify": "hardhat etherscan-verify"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "~4.8.1",
+    "@aave/core-v3": "^1.18.0",
+    "@chainlink/contracts": "^0.8.0",
+    "@openzeppelin/contracts": "^5.0.1",
     "dotenv": "~16.0.3",
     "envfile": "~6.18.0",
     "qrcode": "~1.5.1"
@@ -43,6 +45,7 @@
     "eslint-plugin-prettier": "~4.2.1",
     "ethers": "~5.7.1",
     "hardhat": "~2.17.3",
+    "hardhat-contract-sizer": "^2.10.0",
     "hardhat-deploy": "~0.11.31",
     "hardhat-gas-reporter": "~1.0.9",
     "prettier": "~2.8.4",
